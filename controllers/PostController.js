@@ -37,5 +37,14 @@ module.exports = {
             return appError('已無貼文', next);
         }
         success(res, '成功刪除全部貼文');
+    },
+    async delSinglePost(req, res, next) {
+        const { id } = req.params;
+
+        const result = await PostModel.findByIdAndDelete(id);
+        if ( !result ) {
+            return appError('沒有這則貼文', next);
+        }
+        success(res, '成功刪除單筆貼文');
     }
 }

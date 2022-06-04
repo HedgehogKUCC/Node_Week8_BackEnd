@@ -9,5 +9,6 @@ const isAuth = require('../middlewares/isAuth');
 router.get('/', isAuth, handleErrorAsync(PostController.getPosts));
 router.post('/', isAuth, handleErrorAsync(PostController.insertPost));
 router.delete('/', isAuth, handleErrorAsync(PostController.delAllPosts));
+router.delete('/:id', isAuth, handleErrorAsync(PostController.delSinglePost));
 
 module.exports = router;
