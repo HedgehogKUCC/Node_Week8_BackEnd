@@ -67,5 +67,14 @@ module.exports = {
             return appError('沒有這則貼文', next);
         }
         success(res, result);
+    },
+    async getSinglePost(req, res, next) {
+        const { id } = req.params;
+
+        const result = await PostModel.findById(id).exec();
+        if ( !result ) {
+            return appError('沒有這則貼文', next);
+        }
+        success(res, result);
     }
 }

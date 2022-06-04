@@ -11,5 +11,6 @@ router.post('/', isAuth, handleErrorAsync(PostController.insertPost));
 router.delete('/', isAuth, handleErrorAsync(PostController.delAllPosts));
 router.delete('/:id', isAuth, handleErrorAsync(PostController.delSinglePost));
 router.patch('/:id', isAuth, handleErrorAsync(PostController.updatePostContent));
+router.get('/:id', isAuth, handleErrorAsync(PostController.getSinglePost));
 
 module.exports = router;
