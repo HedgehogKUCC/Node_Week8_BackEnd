@@ -101,6 +101,12 @@ app.use((err, req, res, next) => {
         return resErrorProd(err, res);
     }
 
+    if ( err.name === 'TypeError' ) {
+        err.statusCode = 400;
+        err.isOperational = true;
+        return resErrorProd(err, res);
+    }
+
     resErrorProd(err, res);
 });
 
