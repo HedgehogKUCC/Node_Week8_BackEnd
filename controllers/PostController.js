@@ -15,26 +15,16 @@ module.exports = {
         success(res, result);
     },
     async insertPost(req, res, next) {
-        const data = req.body;
-        const {
-            userID,
-            content,
-        } = data;
+        const { content } = req.body;
 
-        if ( !userID ) {
-            return appError('請登入帳號', next);
-        }
-
-        if ( !content ) {
+        if ( !content.trim() ) {
             return appError('【貼文內容】必填', next);
         }
 
-        const hasUserID = await UserModel.findById(userID).exec();
-        if ( !hasUserID ) {
-            return appError('請註冊帳號', next);
-        }
-
-        const result = await PostModel.create(data);
+        const result = await PostModel.create({
+            userID: req.user.id,
+            content
+        });
         success(res, result, 201);
     },
 }
