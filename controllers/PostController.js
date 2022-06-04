@@ -46,5 +46,26 @@ module.exports = {
             return appError('沒有這則貼文', next);
         }
         success(res, '成功刪除單筆貼文');
+    },
+    async updatePostContent(req, res, next) {
+        const { id } = req.params;
+        const { content } = req.body;
+
+        if ( !content.trim() ) {
+            return appError('【貼文內容】請勿空白', next);
+        }
+
+        const result = await PostModel.findByIdAndUpdate(
+            id,
+            {
+                content,
+                updatedAt: Date.now()
+            },
+            { returnDocument: 'after' }
+        );
+        if ( !result ) {
+            return appError('沒有這則貼文', next);
+        }
+        success(res, result);
     }
 }
