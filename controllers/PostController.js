@@ -76,5 +76,14 @@ module.exports = {
             return appError('沒有這則貼文', next);
         }
         success(res, result);
+    },
+    async getUserPosts(req, res, next) {
+        const { userID } = req.params;
+
+        const result = await PostModel.find({ userID }).populate({
+            path: 'userID',
+            select: 'name avatar'
+        });
+        success(res, result);
     }
 }
