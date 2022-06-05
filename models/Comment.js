@@ -10,6 +10,7 @@ const commentSchema = new mongoose.Schema(
         createdAt: {
             type: Date,
             default: Date.now,
+            select: true,
         },
         userID: {
             type: mongoose.Schema.ObjectId,
@@ -26,6 +27,17 @@ const commentSchema = new mongoose.Schema(
         versionKey: false,
     }
 )
+
+commentSchema.pre(/^find/, function(next) {
+    this.populate(
+        {
+            path: 'userID',
+            select: 'name avatar'
+        }
+    ).sort('-createdAt');
+
+    next();
+});
 
 const CommentModel = mongoose.model('Comment', commentSchema);
 
