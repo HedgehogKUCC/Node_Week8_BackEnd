@@ -1,4 +1,5 @@
 const PostModel = require('../models/Post');
+const CommentModel = require('../models/Comment');
 
 const appError = require('../utils/appError');
 const success = require('../services/responseSuccess');
@@ -129,5 +130,35 @@ module.exports = {
         }
 
         success(res, result);
+    },
+    async insertComment(req, res, next) {
+        const { id: userID } = req.user;
+        const { id: postID } = req.params;
+
+        const data = req.body;
+        const { comment } = data;
+
+        if ( !comment ) {
+            return appError("請傳入 JSON => { 'comment': '' }", next);
+        }
+
+        if ( !comment.trim() ) {
+            return appError('【留言】請填寫', next);
+        }
+
+        const hasPost = await PostModel.findById(postID).exec();
+        if ( !hasPost ) {
+            return appError('沒有這則貼文', next);
+        }
+
+        await CommentModel.create(
+            {
+                comment,
+                userID,
+                postID,
+            }
+        )
+
+        success(res, '新增留言成功', 201);
     }
 }
