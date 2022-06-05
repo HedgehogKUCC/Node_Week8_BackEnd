@@ -2643,7 +2643,7 @@
 														}
 													]
 												},
-												"method": "POST",
+												"method": "PATCH",
 												"header": [],
 												"body": {
 													"mode": "raw",
@@ -2747,37 +2747,6 @@
 									"name": "會員按讚追蹤動態",
 									"item": [
 										{
-											"name": "取得個人按讚列表",
-											"request": {
-												"auth": {
-													"type": "bearer",
-													"bearer": [
-														{
-															"key": "token",
-															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjg0NCwiZXhwIjoxNjU1MDI3NjQ0fQ.9TitNgxr_g9Xdqpk1XmKFGxqJdFyAPxudDcUA4ZILSg",
-															"type": "string"
-														}
-													]
-												},
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/getLikeList",
-													"protocol": "https",
-													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
-													],
-													"path": [
-														"users",
-														"getLikeList"
-													]
-												}
-											},
-											"response": []
-										},
-										{
 											"name": "追蹤朋友",
 											"request": {
 												"auth": {
@@ -2836,6 +2805,37 @@
 														"users",
 														"{{ userID }}",
 														"unfollow"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得個人按讚列表",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjg0NCwiZXhwIjoxNjU1MDI3NjQ0fQ.9TitNgxr_g9Xdqpk1XmKFGxqJdFyAPxudDcUA4ZILSg",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/getLikeList",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"getLikeList"
 													]
 												}
 											},
