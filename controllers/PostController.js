@@ -107,5 +107,27 @@ module.exports = {
         }
 
         success(res, result);
+    },
+    async cancelPostLike(req, res, next) {
+        const { id } = req.params;
+
+        const result = await PostModel.findByIdAndUpdate(
+            id,
+            {
+                $pull: {
+                    likes: req.user.id,
+                },
+                updatedAt: Date.now(),
+            },
+            {
+                returnDocument: 'after'
+            }
+        );
+
+        if ( !result ) {
+            return appError('沒有這則貼文', next);
+        }
+
+        success(res, result);
     }
 }
