@@ -160,5 +160,23 @@ module.exports = {
         )
 
         success(res, '新增留言成功', 201);
+    },
+    async getAllComments(req, res, next) {
+        const { id: postID } = req.params;
+
+        const result = await PostModel.findById(
+            postID,
+        ).populate(
+            {
+                path: 'comments',
+                select: 'userID comment',
+            }
+        );
+
+        if ( !result ) {
+            return appError('沒有這則貼文', next);
+        }
+
+        success(res, result);
     }
 }

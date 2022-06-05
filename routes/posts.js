@@ -16,5 +16,6 @@ router.get('/user/:userID', isAuth, handleErrorAsync(PostController.getUserPosts
 router.post('/:id/like', isAuth, handleErrorAsync(PostController.clickPostLike));
 router.delete('/:id/unlike', isAuth, handleErrorAsync(PostController.cancelPostLike));
 router.post('/:id/comment', isAuth, handleErrorAsync(PostController.insertComment));
+router.get('/:id/comments', isAuth, handleErrorAsync(PostController.getAllComments));
 
 module.exports = router;
