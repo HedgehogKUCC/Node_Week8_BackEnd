@@ -43,7 +43,31 @@ const userSchema = new mongoose.Schema(
             type: Date,
             default: Date.now,
             select: false,
-        }
+        },
+        followers: [
+            {
+                user: {
+                    type: mongoose.Schema.ObjectId,
+                    ref: 'User',
+                },
+                createdAt: {
+                    type: Date,
+                    default: Date.now,
+                }
+            }
+        ],
+        following: [
+            {
+                user: {
+                    type: mongoose.Schema.ObjectId,
+                    ref: 'User',
+                },
+                createdAt: {
+                    type: Date,
+                    default: Date.now,
+                }
+            }
+        ],
     },
     {
         versionKey: false,
