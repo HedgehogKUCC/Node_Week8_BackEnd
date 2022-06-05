@@ -11,5 +11,6 @@ router.post('/sign_in', handleErrorAsync(UserController.searchUserLogin));
 router.post('/updatePassword', isAuth, handleErrorAsync(UserController.updateUserPassword));
 router.get('/profile', isAuth, handleErrorAsync(UserController.getUser));
 router.patch('/profile', isAuth, handleErrorAsync(UserController.updateUserInfo));
+router.get('/getLikeList', isAuth, handleErrorAsync(UserController.getUserLikePostList));
 
 module.exports = router;

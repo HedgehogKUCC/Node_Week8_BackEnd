@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const validator = require('validator');
 
 const UserModel = require('../models/User');
+const PostModel = require('../models/Post');
 
 const appError = require('../utils/appError');
 const success = require('../services/responseSuccess');
@@ -177,5 +178,21 @@ module.exports = {
             updatedAt: Date.now(),
         }, { returnDocument: 'after' });
         success(res, newUserInfo);
+    },
+    async getUserLikePostList(req, res, next) {
+        const result = await PostModel.find(
+            {
+                likes: {
+                    $in: [ req.user.id ]
+                }
+            }
+        ).populate(
+            {
+                path: 'userID',
+                select: 'name avatar',
+            }
+        )
+
+        success(res, result);
     }
 }
