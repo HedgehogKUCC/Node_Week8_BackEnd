@@ -241,5 +241,46 @@ module.exports = {
         )
 
         success(res, '追蹤成功');
+    },
+    async cancelFollowUser(req, res, next) {
+        const { id: myselfID } = req.user;
+        const { id: userID } = req.params;
+
+        if ( myselfID === userID ) {
+            return appError('無法取消追蹤自己唷', next);
+        }
+
+        const result = await UserModel.findById(userID).exec();
+        if ( !result ) {
+            return appError('沒有此帳號', next);
+        }
+
+        await UserModel.updateOne(
+            {
+                _id: myselfID,
+            },
+            {
+                $pull: {
+                    following: {
+                        user: userID,
+                    }
+                }
+            }
+        )
+
+        await UserModel.updateOne(
+            {
+                _id: userID,
+            },
+            {
+                $pull: {
+                    followers: {
+                        user: myselfID,
+                    }
+                }
+            }
+        )
+
+        success(res, '取消追蹤成功');
     }
 }
