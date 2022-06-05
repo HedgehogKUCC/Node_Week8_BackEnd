@@ -85,5 +85,27 @@ module.exports = {
             select: 'name avatar'
         });
         success(res, result);
+    },
+    async clickPostLike(req, res, next) {
+        const { id } = req.params;
+
+        const result = await PostModel.findByIdAndUpdate(
+            id,
+            {
+                $addToSet: {
+                    likes: req.user.id,
+                },
+                updatedAt: Date.now(),
+            },
+            {
+                returnDocument: 'after'
+            }
+        );
+
+        if ( !result ) {
+            return appError('沒有這則貼文', next);
+        }
+
+        success(res, result);
     }
 }

@@ -13,5 +13,6 @@ router.delete('/:id', isAuth, handleErrorAsync(PostController.delSinglePost));
 router.patch('/:id', isAuth, handleErrorAsync(PostController.updatePostContent));
 router.get('/:id', isAuth, handleErrorAsync(PostController.getSinglePost));
 router.get('/user/:userID', isAuth, handleErrorAsync(PostController.getUserPosts));
+router.post('/:id/like', isAuth, handleErrorAsync(PostController.clickPostLike));
 
 module.exports = router;
