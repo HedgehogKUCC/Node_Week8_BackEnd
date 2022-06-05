@@ -12,5 +12,6 @@ router.post('/updatePassword', isAuth, handleErrorAsync(UserController.updateUse
 router.get('/profile', isAuth, handleErrorAsync(UserController.getUser));
 router.patch('/profile', isAuth, handleErrorAsync(UserController.updateUserInfo));
 router.get('/getLikeList', isAuth, handleErrorAsync(UserController.getUserLikePostList));
+router.post('/:id/follow', isAuth, handleErrorAsync(UserController.followUser));
 
 module.exports = router;

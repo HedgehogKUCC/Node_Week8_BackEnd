@@ -194,5 +194,52 @@ module.exports = {
         )
 
         success(res, result);
+    },
+    async followUser(req, res, next) {
+        const { id: myselfID } = req.user;
+        const { id: userID } = req.params;
+
+        if ( myselfID === userID ) {
+            return appError('無法追蹤自己唷', next);
+        }
+
+        const result = await UserModel.findById(userID).exec();
+        if ( !result ) {
+            return appError('沒有此帳號', next);
+        }
+
+        await UserModel.updateOne(
+            {
+                _id: myselfID,
+                "following.user": {
+                    $ne: userID
+                }
+            },
+            {
+                $addToSet: {
+                    following: {
+                        user: userID,
+                    }
+                }
+            }
+        )
+
+        await UserModel.updateOne(
+            {
+                _id: userID,
+                "followers.user": {
+                    $ne: myselfID
+                }
+            },
+            {
+                $addToSet: {
+                    followers: {
+                        user: myselfID
+                    }
+                }
+            }
+        )
+
+        success(res, '追蹤成功');
     }
 }
