@@ -282,5 +282,20 @@ module.exports = {
         )
 
         success(res, '取消追蹤成功');
+    },
+    async getUserFollowing(req, res, next) {
+        const { id } = req.user;
+
+        const result = await UserModel.findById(
+            id,
+            '-followers',
+        ).populate(
+            {
+                path: 'following.user',
+                select: 'name avatar',
+            }
+        )
+
+        success(res, result);
     }
 }
