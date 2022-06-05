@@ -1,0 +1,3304 @@
+{
+	"info": {
+		"_postman_id": "a3ebe8a4-fd72-48bd-bf99-c981c5beea6c",
+		"name": "HexSchool",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Node.js 直播班",
+			"item": [
+				{
+					"name": "第一週 Restful API Herku",
+					"item": [
+						{
+							"name": "取得所有待辦事項",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://guarded-brook-69905.herokuapp.com/todos",
+									"protocol": "https",
+									"host": [
+										"guarded-brook-69905",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"todos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "新增單筆待辦事項",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"hello 111\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://guarded-brook-69905.herokuapp.com/todos",
+									"protocol": "https",
+									"host": [
+										"guarded-brook-69905",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"todos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "刪除所有待辦事項",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://guarded-brook-69905.herokuapp.com/todos",
+									"protocol": "https",
+									"host": [
+										"guarded-brook-69905",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"todos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "刪除單筆待辦事項",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "https://guarded-brook-69905.herokuapp.com/todos/{id}",
+									"protocol": "https",
+									"host": [
+										"guarded-brook-69905",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"todos",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "編輯單筆待辦事項",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"patch 111\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://guarded-brook-69905.herokuapp.com/todos/{id}",
+									"protocol": "https",
+									"host": [
+										"guarded-brook-69905",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"todos",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "第一週 Restful API local kata",
+					"item": [
+						{
+							"name": "取得所有代辦事項",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3005/todos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3005",
+									"path": [
+										"todos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "新增單筆代辦事項",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"今天要刷牙2\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3005/todos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3005",
+									"path": [
+										"todos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "刪除所有代辦事項",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3005/todos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3005",
+									"path": [
+										"todos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "刪除單筆代辦事項",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3005/todos/48954800-1015-448b-9ac3-fad9099d76f1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3005",
+									"path": [
+										"todos",
+										"48954800-1015-448b-9ac3-fad9099d76f1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "編輯代辦事項",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"修改 1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3005/todos/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3005",
+									"path": [
+										"todos",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "第二週 小組任務",
+					"item": [
+						{
+							"name": "取得貼文",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:3005/ArticleList",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "3005",
+									"path": [
+										"ArticleList"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "新增貼文",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"userName\": \"KUCC\",\n    \"userContent\": \"123\",\n    \"userPhoto\": \"\",\n    \"imgUrl\": \"\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:3005/ArticleList",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "3005",
+									"path": [
+										"ArticleList"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "第二週 主線任務",
+					"item": [
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "取得所有貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"K\",\n    \"content\": \"222\",\n    \"likes\": 88,\n    \"image\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除所有貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除單筆貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/posts/62651eee7a7828ebe52b5653",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts",
+												"62651eee7a7828ebe52b5653"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新單筆貼文",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"content\": \"111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/posts/625c1346d4dc910c749ed00b",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts",
+												"625c1346d4dc910c749ed00b"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "heroku",
+							"item": [
+								{
+									"name": "取得所有貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://whispering-journey-23997.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"whispering-journey-23997",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"content\": \"test 1\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://whispering-journey-23997.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"whispering-journey-23997",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除所有貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "https://whispering-journey-23997.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"whispering-journey-23997",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除單筆貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "https://whispering-journey-23997.herokuapp.com/posts/{{ id }}",
+											"protocol": "https",
+											"host": [
+												"whispering-journey-23997",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts",
+												"{{ id }}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新單筆貼文",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"content\": \"111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://whispering-journey-23997.herokuapp.com/posts/{{ id }}",
+											"protocol": "https",
+											"host": [
+												"whispering-journey-23997",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts",
+												"{{ id }}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "第三週 主線任務",
+					"item": [
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "取得所有貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"K\",\n    \"content\": \"222\",\n    \"likes\": 88,\n    \"image\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除所有貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除單筆貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3000/posts/62651eee7a7828ebe52b5653",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts",
+												"62651eee7a7828ebe52b5653"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新單筆貼文",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"content\": \"111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3000/posts/625c1346d4dc910c749ed00b",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"posts",
+												"625c1346d4dc910c749ed00b"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "heroku",
+							"item": [
+								{
+									"name": "取得所有貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://shielded-ridge-59326.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"shielded-ridge-59326",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"KU\",\n    \"content\": \"222\",\n    \"likes\": 88,\n    \"image\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://shielded-ridge-59326.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"shielded-ridge-59326",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除所有貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "https://shielded-ridge-59326.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"shielded-ridge-59326",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除單筆貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "https://shielded-ridge-59326.herokuapp.com/posts/{{ id }}",
+											"protocol": "https",
+											"host": [
+												"shielded-ridge-59326",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts",
+												"{{ id }}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新單筆貼文",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"content\": \"111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://shielded-ridge-59326.herokuapp.com/posts/{{ id }}",
+											"protocol": "https",
+											"host": [
+												"shielded-ridge-59326",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts",
+												"{{ id }}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "第四週 主線任務",
+					"item": [
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "使用者註冊",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"KUCC\",\n    \"sex\": \"male\",\n    \"email\": \"kucc@kucc.com.tw\",\n    \"password\": \"111111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/signup",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"signup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得使用者資訊",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3005/users/628068a545063a2aae8f260f",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"users",
+												"628068a545063a2aae8f260f"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\",\n    \"content\": \"hello world 3\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3005/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "heroku",
+							"item": [
+								{
+									"name": "使用者註冊",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"KUCC\",\n    \"sex\": \"male\",\n    \"email\": \"kucc@kucc.com.tw\",\n    \"password\": \"111111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://blooming-springs-51597.herokuapp.com/signup",
+											"protocol": "https",
+											"host": [
+												"blooming-springs-51597",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"signup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得使用者資訊",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://blooming-springs-51597.herokuapp.com/users/628077f83a15d4d2b326993c",
+											"protocol": "https",
+											"host": [
+												"blooming-springs-51597",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"628077f83a15d4d2b326993c"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\",\n    \"content\": \"hello world\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://blooming-springs-51597.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"blooming-springs-51597",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://blooming-springs-51597.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"blooming-springs-51597",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "第五週 主線任務",
+					"item": [
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "使用者註冊",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Kucc\",\n    \"sex\": \"male\",\n    \"email\": \"kucc@kucc.com.tw\",\n    \"password\": \"111111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/users/signup",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"users",
+												"signup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得使用者資訊",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3005/users/628068a545063a2aae8f260f",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"users",
+												"628068a545063a2aae8f260f"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3005/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\",\n    \"content\": \"111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除單筆貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除全部貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新貼文",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628068a545063a2aae8f260f\",\n    \"content\": 0\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/posts/62997260c608bf71bc3ab427",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"posts",
+												"62997260c608bf71bc3ab427"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "heroku",
+							"item": [
+								{
+									"name": "使用者註冊",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"KUCC\",\n    \"sex\": \"male\",\n    \"email\": \"kucc@kucc.com.tw\",\n    \"password\": \"111111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/users/signup",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"signup"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得使用者資訊",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/users/628077f83a15d4d2b326993c",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"628077f83a15d4d2b326993c"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得貼文",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "新增貼文",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\",\n    \"content\": \"111\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除單筆貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/posts/{{ id }}",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts",
+												"{{ id }}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "刪除全部貼文",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/posts",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新貼文",
+									"request": {
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"userID\": \"628077f83a15d4d2b326993c\",\n    \"content\": \"222\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://stark-scrubland-08223.herokuapp.com/posts/{{ id }}",
+											"protocol": "https",
+											"host": [
+												"stark-scrubland-08223",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"posts",
+												"{{ id }}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "第六、七週 主線任務",
+					"item": [
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "註冊",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Te\",\n    \"sex\": \"male\",\n    \"email\": \"ccc@yahoo.com.tw\",\n    \"password\": \"1234567Aa+\",\n    \"confirmPassword\": \"1234567Aa+\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/users/sign_up",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"users",
+												"sign_up"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "登入",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"ccc@yahoo.com.tw\",\n    \"password\": \"1234567Aa+\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/users/sign_in",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"users",
+												"sign_in"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新密碼",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTJlYzQ5MzZiNjlmZGUzMDkxMGI0OSIsImlhdCI6MTY1Mzc5NTkyMSwiZXhwIjoxNjU0NDAwNzIxfQ.bBHn26lCFJlaG4b0_M3QUIs3MDdUhhz9i3AvxYq-6zE",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"password\": \"1234567Aa+\",\n    \"confirmPassword\": \"1234567Aa+\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/users/updatePassword",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"users",
+												"updatePassword"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得個人資料",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTFlY2QzODdlNDFjM2MyMTNkZDdlOCIsImlhdCI6MTY1MzgxNTA4NywiZXhwIjoxNjU0NDE5ODg3fQ.wmZCGzogpZVwAu4dMmXuF6YkTF5iyewVOQ98DBmWzRI",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:3005/users/profile",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"users",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新個人資料",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTFlY2QzODdlNDFjM2MyMTNkZDdlOCIsImlhdCI6MTY1MzgxNTgwMiwiZXhwIjoxNjU0NDIwNjAyfQ.sri9PMQBy08tCx4UBaQ5daD3CafQLuPBt8YBV3Gu0ms",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"avatar\": \"https://i.imgur.com/m8khK3h.png\",\n    \"name\": \"TeT\",\n    \"sex\": \"female\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:3005/users/profile",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"users",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "上傳圖片",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTFlY2QzODdlNDFjM2MyMTNkZDdlOCIsImlhdCI6MTY1NDI0MzA0NCwiZXhwIjoxNjU0ODQ3ODQ0fQ.XZ0vw_UYQUx24ZasXtxr04_-cNUFctuuwxk1e1dYa_s",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "",
+													"type": "file",
+													"src": "/Users/kucc/Pictures/300_300.png"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:3005/upload",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3005",
+											"path": [
+												"upload"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "heroku",
+							"item": [
+								{
+									"name": "註冊",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"Te\",\n    \"sex\": \"male\",\n    \"email\": \"ccc@yahoo.com.tw\",\n    \"password\": \"1234567Aa+\",\n    \"confirmPassword\": \"1234567Aa+\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://still-spire-13553.herokuapp.com/users/sign_up",
+											"protocol": "https",
+											"host": [
+												"still-spire-13553",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"sign_up"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "登入",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"email\": \"ccc@yahoo.com.tw\",\n    \"password\": \"1234567Aa+\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://still-spire-13553.herokuapp.com/users/sign_in",
+											"protocol": "https",
+											"host": [
+												"still-spire-13553",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"sign_in"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新密碼",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTM0MzNlNjRlNWZjZWI2ZDczMTk5YiIsImlhdCI6MTY1MzgxODI5NCwiZXhwIjoxNjU0NDIzMDk0fQ.cVK5uIBN6lDh7eRD3N2t-uXwIyEDz_EvEgYmJtX1XoM",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"password\": \"1234567Aa+\",\n    \"confirmPassword\": \"1234567Aa+\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://still-spire-13553.herokuapp.com/users/updatePassword",
+											"protocol": "https",
+											"host": [
+												"still-spire-13553",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"updatePassword"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "取得個人資料",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTM0MzNlNjRlNWZjZWI2ZDczMTk5YiIsImlhdCI6MTY1MzgxODI5NCwiZXhwIjoxNjU0NDIzMDk0fQ.cVK5uIBN6lDh7eRD3N2t-uXwIyEDz_EvEgYmJtX1XoM",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://still-spire-13553.herokuapp.com/users/profile",
+											"protocol": "https",
+											"host": [
+												"still-spire-13553",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "更新個人資料",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTM0MzNlNjRlNWZjZWI2ZDczMTk5YiIsImlhdCI6MTY1MzgxODI5NCwiZXhwIjoxNjU0NDIzMDk0fQ.cVK5uIBN6lDh7eRD3N2t-uXwIyEDz_EvEgYmJtX1XoM",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PATCH",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"avatar\": \"https://i.imgur.com/m8khK3h.png\",\n    \"name\": \"TeT\",\n    \"sex\": \"female\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://still-spire-13553.herokuapp.com/users/profile",
+											"protocol": "https",
+											"host": [
+												"still-spire-13553",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"users",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "上傳圖片",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOTliNTk4MDUwOTg0Mzc3MmNmOTNkNyIsImlhdCI6MTY1NDI0NzU4MywiZXhwIjoxNjU0ODUyMzgzfQ.joXGLsl9eUXCkpYfPJlOmnwnEJFcl2Wh3H_OXkuplxc",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "",
+													"type": "file",
+													"src": []
+												}
+											]
+										},
+										"url": {
+											"raw": "https://still-spire-13553.herokuapp.com/upload",
+											"protocol": "https",
+											"host": [
+												"still-spire-13553",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"upload"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "第八週 主線任務",
+					"item": [
+						{
+							"name": "local",
+							"item": [
+								{
+									"name": "會員功能",
+									"item": [
+										{
+											"name": "註冊",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"Te\",\n    \"sex\": \"female\",\n    \"email\": \"test@yahoo.com.tw\",\n    \"password\": \"1234567Aa+\",\n    \"confirmPassword\": \"1234567Aa+\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:3005/users/sign_up",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"sign_up"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "登入",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"email\": \"test@yahoo.com.tw\",\n    \"password\": \"1234567Aa+\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:3005/users/sign_in",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"sign_in"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "重設密碼",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"password\": \"1234567Aa+\",\n    \"confirmPassword\": \"1234567Aa+\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:3005/users/updatePassword",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"updatePassword"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得個人資料",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/users/profile",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"profile"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新個人資料",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"avatar\": \"https://i.imgur.com/m8khK3h.png\",\n    \"name\": \"Kucc\",\n    \"sex\": \"male\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:3005/users/profile",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"profile"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "會員按讚追蹤動態",
+									"item": [
+										{
+											"name": "取得個人按讚列表",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDM5NTU0NywiZXhwIjoxNjU1MDAwMzQ3fQ.A56ckcVoLZ3VNTS-yEXrUQms7h92dOj_BNgU53UKJEo",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/users/getLikeList",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"getLikeList"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "追蹤朋友",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDM5NTU0NywiZXhwIjoxNjU1MDAwMzQ3fQ.A56ckcVoLZ3VNTS-yEXrUQms7h92dOj_BNgU53UKJEo",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/users/629b0923e113c45d6ed399f7/follow",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"629b0923e113c45d6ed399f7",
+														"follow"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取消追蹤朋友",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDM5NTU0NywiZXhwIjoxNjU1MDAwMzQ3fQ.A56ckcVoLZ3VNTS-yEXrUQms7h92dOj_BNgU53UKJEo",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/users/629b0923e113c45d6ed399f7/unfollow",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"629b0923e113c45d6ed399f7",
+														"unfollow"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得個人追蹤名單",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDM5NTU0NywiZXhwIjoxNjU1MDAwMzQ3fQ.A56ckcVoLZ3VNTS-yEXrUQms7h92dOj_BNgU53UKJEo",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/users/following",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"users",
+														"following"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "動態貼文",
+									"item": [
+										{
+											"name": "取得所有貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/posts",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得單ㄧ貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/posts/629b18e425421029f35f74cc",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts",
+														"629b18e425421029f35f74cc"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "新增貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDMzMjE0MSwiZXhwIjoxNjU0OTM2OTQxfQ.MtPQ1xARqJlqS8TUKCbcMMQm0xcEUoIETTfz4KPyaWY",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"content\": \"test 222\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:3005/posts",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "新增一則貼文的讚",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDM5NTU0NywiZXhwIjoxNjU1MDAwMzQ3fQ.A56ckcVoLZ3VNTS-yEXrUQms7h92dOj_BNgU53UKJEo",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/posts/629b18e425421029f35f74cc/like",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts",
+														"629b18e425421029f35f74cc",
+														"like"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取消一則貼文的讚",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDM5NTU0NywiZXhwIjoxNjU1MDAwMzQ3fQ.A56ckcVoLZ3VNTS-yEXrUQms7h92dOj_BNgU53UKJEo",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/posts/629b18e425421029f35f74cc/unlike",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts",
+														"629b18e425421029f35f74cc",
+														"unlike"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "新增一則貼文的留言",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDM5NTU0NywiZXhwIjoxNjU1MDAwMzQ3fQ.A56ckcVoLZ3VNTS-yEXrUQms7h92dOj_BNgU53UKJEo",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"comment\": \"333\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:3005/posts/629b18e425421029f35f74cc/comment",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts",
+														"629b18e425421029f35f74cc",
+														"comment"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得個人所有貼文列表",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDMzMjQ1NywiZXhwIjoxNjU0OTM3MjU3fQ.BSe7qE0zXn86hzAS_VBwMbAK3Qu6_QdmzzMl6Rm7M-0",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/posts/user/629b0923e113c45d6ed399f7",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts",
+														"user",
+														"629b0923e113c45d6ed399f7"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"content\": \"222\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "http://localhost:3005/posts/629b12fa69459f93ba4d7172",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts",
+														"629b12fa69459f93ba4d7172"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "刪除全部貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/posts",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "刪除單筆貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIwOTIzZTExM2M0NWQ2ZWQzOTlmNyIsImlhdCI6MTY1NDMyNzU4NywiZXhwIjoxNjU0OTMyMzg3fQ.8H5ca0jo3j_48X2YRBPdeBa7oR3MZf8rKCMA2IMFb4U",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/posts/629b1198e8ad1329ef6e7ad4",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts",
+														"629b1198e8ad1329ef6e7ad4"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得單筆貼文所有留言",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDM5NTU0NywiZXhwIjoxNjU1MDAwMzQ3fQ.A56ckcVoLZ3VNTS-yEXrUQms7h92dOj_BNgU53UKJEo",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "http://localhost:3005/posts/629b18e425421029f35f74cc/comments",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"posts",
+														"629b18e425421029f35f74cc",
+														"comments"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "其它",
+									"item": [
+										{
+											"name": "上傳圖片",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWIxYWVkNTE3ZjE0NTQ2Y2U2NGY4NCIsImlhdCI6MTY1NDMzMjQ1NywiZXhwIjoxNjU0OTM3MjU3fQ.BSe7qE0zXn86hzAS_VBwMbAK3Qu6_QdmzzMl6Rm7M-0",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "",
+															"type": "file",
+															"src": []
+														}
+													]
+												},
+												"url": {
+													"raw": "http://localhost:3005/upload",
+													"protocol": "http",
+													"host": [
+														"localhost"
+													],
+													"port": "3005",
+													"path": [
+														"upload"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "heroku",
+							"item": [
+								{
+									"name": "會員功能",
+									"item": [
+										{
+											"name": "註冊",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"name\": \"test\",\n    \"sex\": \"female\",\n    \"email\": \"test@yahoo.com.tw\",\n    \"password\": \"1234567Aa+\",\n    \"confirmPassword\": \"1234567Aa+\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/sign_up",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"sign_up"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "登入",
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"email\": \"ccc@yahoo.com.tw\",\n    \"password\": \"1234567Aa+\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/sign_in",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"sign_in"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "重設密碼",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMTU4NSwiZXhwIjoxNjU1MDI2Mzg1fQ.mmBJOQhwqf3EysUKn-6mYVivmy5VclzId-Kl1k7DWr0",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"password\": \"1234567Aa+\",\n    \"confirmPassword\": \"1234567Aa+\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/updatePassword",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"updatePassword"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得個人資料",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMTU4NSwiZXhwIjoxNjU1MDI2Mzg1fQ.mmBJOQhwqf3EysUKn-6mYVivmy5VclzId-Kl1k7DWr0",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/profile",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"profile"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新個人資料",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMTU4NSwiZXhwIjoxNjU1MDI2Mzg1fQ.mmBJOQhwqf3EysUKn-6mYVivmy5VclzId-Kl1k7DWr0",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"avatar\": \"https://i.imgur.com/m8khK3h.png\",\n    \"name\": \"Kucc\",\n    \"sex\": \"male\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/profile",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"profile"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "會員按讚追蹤動態",
+									"item": [
+										{
+											"name": "取得個人按讚列表",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjg0NCwiZXhwIjoxNjU1MDI3NjQ0fQ.9TitNgxr_g9Xdqpk1XmKFGxqJdFyAPxudDcUA4ZILSg",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/getLikeList",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"getLikeList"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "追蹤朋友",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjg0NCwiZXhwIjoxNjU1MDI3NjQ0fQ.9TitNgxr_g9Xdqpk1XmKFGxqJdFyAPxudDcUA4ZILSg",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/{{ userID }}/follow",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"{{ userID }}",
+														"follow"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取消追蹤朋友",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjg0NCwiZXhwIjoxNjU1MDI3NjQ0fQ.9TitNgxr_g9Xdqpk1XmKFGxqJdFyAPxudDcUA4ZILSg",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/{{ userID }}/unfollow",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"{{ userID }}",
+														"unfollow"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得個人追蹤名單",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjg0NCwiZXhwIjoxNjU1MDI3NjQ0fQ.9TitNgxr_g9Xdqpk1XmKFGxqJdFyAPxudDcUA4ZILSg",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/users/following",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"users",
+														"following"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "動態貼文",
+									"item": [
+										{
+											"name": "取得所有貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMTU4NSwiZXhwIjoxNjU1MDI2Mzg1fQ.mmBJOQhwqf3EysUKn-6mYVivmy5VclzId-Kl1k7DWr0",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得單ㄧ貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts",
+														"{{ postID }}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "新增貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMTU4NSwiZXhwIjoxNjU1MDI2Mzg1fQ.mmBJOQhwqf3EysUKn-6mYVivmy5VclzId-Kl1k7DWr0",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"content\": \"kucc 111\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "新增一則貼文的讚",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}/like",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts",
+														"{{ postID }}",
+														"like"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取消一則貼文的讚",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}/unlike",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts",
+														"{{ postID }}",
+														"unlike"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "新增一則貼文的留言",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"comment\": \"111\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}/comment",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts",
+														"{{ postID }}",
+														"comment"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得個人所有貼文列表",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts/user/{{ userID }}",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts",
+														"user",
+														"{{ userID }}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "更新貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "PATCH",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"content\": \"222\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts",
+														"{{ postID }}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "刪除全部貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "刪除單筆貼文",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts",
+														"{{ postID }}"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "取得單筆貼文所有留言",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}/comments",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"posts",
+														"{{ postID }}",
+														"comments"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "其它",
+									"item": [
+										{
+											"name": "上傳圖片",
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyOWM3N2MyNWM3NjM5NjQzYjZmOTAwNyIsImlhdCI6MTY1NDQyMjMwNywiZXhwIjoxNjU1MDI3MTA3fQ.49H8nxTT9YwST6_PhFFWGwKVrInp-ozAw6_vzaLwxCA",
+															"type": "string"
+														}
+													]
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "",
+															"type": "file",
+															"src": []
+														}
+													]
+												},
+												"url": {
+													"raw": "https://obscure-lake-00335.herokuapp.com/upload",
+													"protocol": "https",
+													"host": [
+														"obscure-lake-00335",
+														"herokuapp",
+														"com"
+													],
+													"path": [
+														"upload"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
