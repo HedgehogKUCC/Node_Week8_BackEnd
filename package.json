@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./api/index",
+    "build": "node ./api/index",
     "dev": "cross-env NODE_ENV=development nodemon ./api/index",
     "prod": "cross-env NODE_ENV=production nodemon ./api/index"
   },
