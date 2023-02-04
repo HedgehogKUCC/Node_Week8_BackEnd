@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "a3ebe8a4-fd72-48bd-bf99-c981c5beea6c",
+		"_postman_id": "5e935449-ac8a-44e8-9861-2e98001934ea",
 		"name": "HexSchool",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9556742"
 	},
 	"item": [
 		{
@@ -2582,12 +2583,9 @@
 													}
 												},
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/sign_up",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/sign_up",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2615,12 +2613,9 @@
 													}
 												},
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/sign_in",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/sign_in",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2655,12 +2650,9 @@
 													}
 												},
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/updatePassword",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/updatePassword",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2686,12 +2678,9 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/profile",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/profile",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2726,12 +2715,9 @@
 													}
 												},
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/profile",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/profile",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2762,12 +2748,9 @@
 												"method": "POST",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/{{ userID }}/follow",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/{{ userID }}/follow",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2794,12 +2777,9 @@
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/{{ userID }}/unfollow",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/{{ userID }}/unfollow",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2826,12 +2806,9 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/getLikeList",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/getLikeList",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2857,12 +2834,9 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/users/following",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/users/following",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"users",
@@ -2893,12 +2867,9 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts"
@@ -2923,12 +2894,9 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts/{{ postID }}",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts",
@@ -2963,12 +2931,9 @@
 													}
 												},
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts"
@@ -2993,12 +2958,9 @@
 												"method": "POST",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}/like",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts/{{ postID }}/like",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts",
@@ -3025,12 +2987,9 @@
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}/unlike",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts/{{ postID }}/unlike",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts",
@@ -3066,12 +3025,9 @@
 													}
 												},
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}/comment",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts/{{ postID }}/comment",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts",
@@ -3098,12 +3054,9 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts/user/{{ userID }}",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts/user/{{ userID }}",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts",
@@ -3139,12 +3092,9 @@
 													}
 												},
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts/{{ postID }}",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts",
@@ -3170,12 +3120,9 @@
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts"
@@ -3200,12 +3147,9 @@
 												"method": "DELETE",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts/{{ postID }}",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts",
@@ -3231,12 +3175,9 @@
 												"method": "GET",
 												"header": [],
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/posts/{{ postID }}/comments",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/posts/{{ postID }}/comments",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"posts",
@@ -3278,12 +3219,9 @@
 													]
 												},
 												"url": {
-													"raw": "https://obscure-lake-00335.herokuapp.com/upload",
-													"protocol": "https",
+													"raw": "{{vercel-domain}}/upload",
 													"host": [
-														"obscure-lake-00335",
-														"herokuapp",
-														"com"
+														"{{vercel-domain}}"
 													],
 													"path": [
 														"upload"
@@ -3299,6 +3237,12 @@
 					]
 				}
 			]
+		}
+	],
+	"variable": [
+		{
+			"key": "vercel-domain",
+			"value": "https://meta-wall-pi.vercel.app"
 		}
 	]
 }
