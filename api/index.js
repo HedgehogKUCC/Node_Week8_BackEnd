@@ -26,10 +26,10 @@ process.on('uncaughtException', err => {
     process.exit(1);
 });
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/posts', postsRouter);
-app.use('/upload', uploadRouter);
+app.use('/api/', indexRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/posts', postsRouter);
+app.use('/api/upload', uploadRouter);
 
 app.use((req, res, next) => {
     const error = new Error('無此路由');
