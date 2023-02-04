@@ -1,134 +1,90 @@
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+#!/usr/bin/env node
 
-const indexRouter = require('../routes/index');
-const usersRouter = require('../routes/users');
-const postsRouter = require('../routes/posts');
-const uploadRouter = require('../routes/upload');
+/**
+ * Module dependencies.
+ */
 
-const app = express();
-require('../connections/mongoDB');
+var app = require('../app');
+var debug = require('debug')('backend:server');
+var http = require('http');
 
-app.use(cors());
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+/**
+ * Get port from environment and store in Express.
+ */
 
-process.on('uncaughtException', err => {
-    // 記錄錯誤下來，等到服務都處理完後，停掉該 process
-    console.error('Uncaughted Exception！')
-    console.error(err);
-    process.exit(1);
-});
+var port = normalizePort(process.env.PORT || '3005');
+app.set('port', port);
 
-app.use('/api/', indexRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/posts', postsRouter);
-app.use('/api/upload', uploadRouter);
+/**
+ * Create HTTP server.
+ */
 
-app.use((req, res, next) => {
-    const error = new Error('無此路由');
-    error.statusCode = 404;
-    error.isOperational = true;
-    next(error);
-});
+var server = http.createServer(app);
 
-const resErrorProd = (err, res) => {
-    if ( err.isOperational ) {
-        if ( err.columns ) {
-            return res.status(err.statusCode).send({
-                result: false,
-                msg: err.message,
-                columns: err.errors,
-            });
-        }
-        return res.status(err.statusCode).send({
-            result: false,
-            msg: err.message,
-        });
-    }
-    console.log('重大錯誤 => ', err);
+/**
+ * Listen on provided port, on all network interfaces.
+ */
 
-    /**
-     * Vercel
-     * https://vercel.com/guides/using-express-with-vercel#standalone-express
-     * 
-     * Notice that we added a setHeader line for our Cache-Control. This describes the lifetime of our resource, telling the CDN to serve from the cache and update in the background (at most once per second).
-     */
-    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+server.listen(port);
+server.on('error', onError);
+server.on('listening', onListening);
 
-    res.status(err.statusCode).send({
-        result: false,
-        msg: '系統錯誤，請洽系統管理員',
-    });
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
 }
 
-const resErrorDev = (err, res) => {
-    res.status(err.statusCode).send({
-        result: false,
-        name: err.name,
-        msg: err.message,
-        stack: err.stack,
-        error: err,
-    });
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
 }
 
-app.use((err, req, res, next) => {
-    err.statusCode = err.statusCode || 500;
+/**
+ * Event listener for HTTP server "listening" event.
+ */
 
-    if ( err.message.indexOf('圖片檔案格式') !== -1 ) {
-        err.statusCode = 400;
-        err.isOperational = true;
-    }
-
-    if ( process.env.NODE_ENV === 'development' ) {
-        return resErrorDev(err, res);
-    }
-
-    if ( err.name === 'ValidationError' ) {
-        err.message = '資料欄位填寫有誤';
-        err.columns = err.errors;
-        err.isOperational = true;
-        return resErrorProd(err, res);
-    }
-
-    if ( err.name === 'JsonWebTokenError' || err.name === 'TokenExpiredError' ) {
-        err.message = '請重新登入帳號';
-        err.statusCode = 401;
-        err.isOperational = true;
-        return resErrorProd(err, res);
-    }
-
-    if ( err.name === 'MulterError' ) {
-        err.statusCode = 400;
-        err.isOperational = true;
-        return resErrorProd(err, res);
-    }
-
-    if ( err.name === 'TypeError' ) {
-        err.statusCode = 400;
-        err.isOperational = true;
-        return resErrorProd(err, res);
-    }
-
-    if ( err.name === 'CastError' ) {
-        err.message = '傳入的值與伺服器定義型別有誤';
-        err.statusCode = 400;
-        err.isOperational = true;
-        return resErrorProd(err, res);
-    }
-
-    resErrorProd(err, res);
-});
-
-process.on('unhandledRejection', (err, promise) => {
-    console.error('未捕捉到的 rejection：', promise);
-    console.error('unhandledRejection 原因：', err);
-});
-
-module.exports = app;
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
