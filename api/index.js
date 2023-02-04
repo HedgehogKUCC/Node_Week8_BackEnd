@@ -4,13 +4,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const postsRouter = require('./routes/posts');
-const uploadRouter = require('./routes/upload');
+const indexRouter = require('../routes/index');
+const usersRouter = require('../routes/users');
+const postsRouter = require('../routes/posts');
+const uploadRouter = require('../routes/upload');
 
 const app = express();
-require('./connections/mongoDB');
+require('../connections/mongoDB');
 
 app.use(cors());
 app.use(logger('dev'));
@@ -53,6 +53,15 @@ const resErrorProd = (err, res) => {
         });
     }
     console.log('重大錯誤 => ', err);
+
+    /**
+     * Vercel
+     * https://vercel.com/guides/using-express-with-vercel#standalone-express
+     * 
+     * Notice that we added a setHeader line for our Cache-Control. This describes the lifetime of our resource, telling the CDN to serve from the cache and update in the background (at most once per second).
+     */
+    res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate');
+
     res.status(err.statusCode).send({
         result: false,
         msg: '系統錯誤，請洽系統管理員',
