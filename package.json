@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "tsc": "del-cli --force ./dist && tsc",
-    "dev": "cross-env NODE_ENV=development nodemon ./api/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon ./dist/api/index.js",
     "prod": "cross-env NODE_ENV=production nodemon ./api/index.js"
   },
   "dependencies": {
