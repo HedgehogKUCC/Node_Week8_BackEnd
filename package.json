@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "tsc": "del-cli --force ./dist && tsc",
     "dev": "cross-env NODE_ENV=development nodemon ./api/index.js",
     "prod": "cross-env NODE_ENV=production nodemon ./api/index.js"
   },
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "cross-env": "7.0.3",
+    "del-cli": "5.0.0",
     "nodemon": "2.0.16"
   }
 }
