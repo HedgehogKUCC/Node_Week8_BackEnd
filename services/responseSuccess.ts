@@ -1,4 +1,6 @@
-module.exports = (res, data, httpStatus = 200) => {
+import { Response } from 'express';
+
+export default (res: Response, data: object | string, httpStatus = 200) => {
     /**
      * Vercel
      * https://vercel.com/guides/using-express-with-vercel#standalone-express

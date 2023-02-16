@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const success = require('../services/responseSuccess');
+import success from '../services/responseSuccess';
 
 module.exports = (user, res, httpStatus = 200) => {
 

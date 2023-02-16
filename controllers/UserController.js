@@ -4,9 +4,9 @@ const validator = require('validator');
 const UserModel = require('../models/User');
 const PostModel = require('../models/Post');
 
-const appError = require('../utils/appError');
-const success = require('../services/responseSuccess');
 const generateJWT = require('../utils/generateJWT');
+
+import success from '../services/responseSuccess';
 
 module.exports = {
     async getUser(req, res, next) {

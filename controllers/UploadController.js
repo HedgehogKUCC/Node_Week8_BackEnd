@@ -1,8 +1,7 @@
 const sizeOf = require('image-size');
 const { ImgurClient } = require('imgur');
 
-const appError = require('../utils/appError');
-const success = require('../services/responseSuccess');
+import success from '../services/responseSuccess';
 
 module.exports = {
     async upload(req, res, next) {
