@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 
-const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
