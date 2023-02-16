@@ -13,7 +13,7 @@ const uploadRouter = require('./routes/upload');
 import { CustomError } from './types/index';
 
 const app = express();
-require('./connections/mongoDB');
+import './connections/mongoDB';
 
 app.use(cors());
 app.use(logger('dev'));
