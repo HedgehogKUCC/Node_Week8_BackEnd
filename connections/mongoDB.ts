@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 dotenv.config(
     {
@@ -10,11 +10,11 @@ dotenv.config(
 let DB = '';
 
 if ( process.env.NODE_ENV === 'development' ) {
-    DB = process.env.DevMongoDB;
+    DB = process.env.DevMongoDB!;
 } else {
-    DB = process.env.MongoDB.replace(
+    DB = process.env.MongoDB!.replace(
         '<password>',
-        process.env.MongoDB_Password,
+        process.env.MongoDB_Password!,
     )
 }
 
