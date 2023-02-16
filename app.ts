@@ -1,8 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import path from 'path';
+import cookieParser from 'cookie-parser';
 
-const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 import indexRouter from './routes/index';
