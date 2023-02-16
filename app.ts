@@ -1,13 +1,17 @@
-const express = require('express');
+import express, { Request, Response, NextFunction } from 'express';
+
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
+import indexRouter from './routes/index';
+
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
 const uploadRouter = require('./routes/upload');
+
+import { CustomError } from './types/index';
 
 const app = express();
 require('./connections/mongoDB');
@@ -31,14 +35,14 @@ app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
 app.use('/upload', uploadRouter);
 
-app.use((req, res, next) => {
-    const error = new Error('無此路由');
+app.use((req: Request, res: Response, next: NextFunction) => {
+    const error = new Error('無此路由') as CustomError;
     error.statusCode = 404;
     error.isOperational = true;
     next(error);
 });
 
-const resErrorProd = (err, res) => {
+const resErrorProd = (err: CustomError, res: Response) => {
     if ( err.isOperational ) {
         if ( err.columns ) {
             return res.status(err.statusCode).send({
@@ -68,7 +72,7 @@ const resErrorProd = (err, res) => {
     });
 }
 
-const resErrorDev = (err, res) => {
+const resErrorDev = (err: CustomError, res: Response) => {
     res.status(err.statusCode).send({
         result: false,
         name: err.name,
@@ -78,7 +82,7 @@ const resErrorDev = (err, res) => {
     });
 }
 
-app.use((err, req, res, next) => {
+app.use((err: CustomError, req: Request, res: Response, next: NextFunction) => {
     err.statusCode = err.statusCode || 500;
 
     if ( err.message.indexOf('圖片檔案格式') !== -1 ) {
@@ -131,4 +135,4 @@ process.on('unhandledRejection', (err, promise) => {
     console.error('unhandledRejection 原因：', err);
 });
 
-module.exports = app;
+export default app;
