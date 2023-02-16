@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const handleErrorAsync = require('../utils/handleErrorAsync');
+import handleErrorAsync from '../utils/handleErrorAsync';
 const PostController = require('../controllers/PostController');
 
 const isAuth = require('../middlewares/isAuth');
