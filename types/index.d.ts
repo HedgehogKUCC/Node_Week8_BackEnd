@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { ObjectId } from 'mongoose';
 
 export interface CustomError extends Error {
   statusCode: number;
@@ -13,3 +14,16 @@ export interface CustomHttpServerError extends Error {
 }
 
 export type AsyncFunction = (req: Request, res: Response, next: NextFunction) => Promise<T>;
+
+export interface User {
+  _id: ObjectId;
+  name: string;
+  sex: string;
+  email: string;
+  password?: string;
+  avatar?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  followers: ObjectId[] | [];
+  following: ObjectId[] | [];
+}

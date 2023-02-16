@@ -4,7 +4,7 @@ const validator = require('validator');
 const UserModel = require('../models/User');
 const PostModel = require('../models/Post');
 
-const generateJWT = require('../utils/generateJWT');
+import generateJWT from '../utils/generateJWT';
 
 import success from '../services/responseSuccess';
 import appError from '../services/appError';
