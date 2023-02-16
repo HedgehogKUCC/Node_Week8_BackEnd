@@ -7,6 +7,7 @@ const PostModel = require('../models/Post');
 const generateJWT = require('../utils/generateJWT');
 
 import success from '../services/responseSuccess';
+import appError from '../services/appError';
 
 module.exports = {
     async getUser(req, res, next) {

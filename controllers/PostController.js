@@ -2,6 +2,7 @@ const PostModel = require('../models/Post');
 const CommentModel = require('../models/Comment');
 
 import success from '../services/responseSuccess';
+import appError from '../services/appError';
 
 module.exports = {
     async getPosts(req, res, next) {
