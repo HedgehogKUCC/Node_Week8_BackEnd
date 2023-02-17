@@ -4,7 +4,7 @@ const router = express.Router();
 import handleErrorAsync from '../utils/handleErrorAsync';
 const PostController = require('../controllers/PostController');
 
-const isAuth = require('../middlewares/isAuth');
+import isAuth from '../middlewares/isAuth';
 
 router.get('/', isAuth, handleErrorAsync(PostController.getPosts));
 router.post('/', isAuth, handleErrorAsync(PostController.insertPost));

@@ -1,12 +1,12 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken';
 
 const UserModel = require('../models/User');
 
 import handleErrorAsync from '../utils/handleErrorAsync';
 import appError from '../services/appError';
 
-module.exports = handleErrorAsync(async (req, res, next) => {
-    let token;
+export default handleErrorAsync(async (req, res, next) => {
+    let token: string | undefined = undefined;
 
     if (
         req.headers.authorization &&
@@ -20,14 +20,18 @@ module.exports = handleErrorAsync(async (req, res, next) => {
     }
 
     const decodeJWT = await new Promise((resolve, reject) => {
-        jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+        jwt.verify(token!, process.env.JWT_SECRET!, (err, payload) => {
             if ( err ) {
                 reject(err);
             } else {
                 resolve(payload);
             }
         });
-    });
+    }) as string | jwt.JwtPayload | undefined;
+
+    if ( typeof decodeJWT === 'undefined' || typeof decodeJWT === 'string' ) {
+        return  appError('請登入帳號', next, 401);
+    }
 
     req.user = await UserModel.findById(decodeJWT.id);
     if ( !req.user ) {

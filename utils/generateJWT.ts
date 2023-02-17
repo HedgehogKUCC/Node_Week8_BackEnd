@@ -7,7 +7,6 @@ import success from '../services/responseSuccess';
 
 export default (user: User, res: Response, httpStatus = 200) => {
 
-    console.log(`generateJWT user => ${user}`);
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET!, {
         expiresIn: process.env.JWT_EXPIRES_DAY!,
     });

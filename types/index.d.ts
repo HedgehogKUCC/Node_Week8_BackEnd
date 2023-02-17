@@ -13,7 +13,11 @@ export interface CustomHttpServerError extends Error {
   code: string;
 }
 
-export type AsyncFunction = (req: Request, res: Response, next: NextFunction) => Promise<T>;
+export interface CustomRequest extends Request {
+  user: User;
+}
+
+export type AsyncFunction = (req: CustomRequest, res: Response, next: NextFunction) => Promise<T>;
 
 export interface User {
   _id: ObjectId;
