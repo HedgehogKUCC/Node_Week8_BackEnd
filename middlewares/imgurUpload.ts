@@ -1,8 +1,8 @@
-const path = require('path');
+import path from 'path';
 
-const multer = require('multer');
+import multer from 'multer';
 
-module.exports = multer({
+export default multer({
     limits: {
         fileSize: 2*1024*1024,
     },
