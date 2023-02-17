@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
 import handleErrorAsync from '../utils/handleErrorAsync';
 
@@ -10,4 +10,4 @@ import imgurUpload from '../middlewares/imgurUpload';
 
 router.post('/', isAuth, imgurUpload, handleErrorAsync(UploadController.upload));
 
-module.exports = router;
+export default router;

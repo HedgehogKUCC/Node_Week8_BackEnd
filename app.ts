@@ -5,10 +5,10 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import indexRouter from './routes/index';
+import uploadRouter from './routes/upload';
 
 const usersRouter = require('./routes/users');
 const postsRouter = require('./routes/posts');
-const uploadRouter = require('./routes/upload');
 
 import { CustomError } from './types/index';
 
