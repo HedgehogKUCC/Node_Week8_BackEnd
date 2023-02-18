@@ -1,5 +1,8 @@
-const bcrypt = require('bcryptjs');
-const validator = require('validator');
+import { Request, Response, NextFunction } from 'express';
+import { CustomRequest, User } from '../types/index';
+
+import bcrypt from 'bcryptjs';
+import validator from 'validator';
 
 const UserModel = require('../models/User');
 const PostModel = require('../models/Post');
@@ -10,18 +13,22 @@ import success from '../services/responseSuccess';
 import appError from '../services/appError';
 
 module.exports = {
-    async getUser(req, res, next) {
+    async getUser(req: CustomRequest, res: Response, next: NextFunction) {
         success(res, req.user);
     },
-    async insertUser(req, res, next) {
-        const data = req.body;
+    async insertUser(req: Request, res: Response, next: NextFunction) {
+        const data = req.body as User;
         const {
             name,
             sex,
             email,
             password,
             confirmPassword,
-        } = data;
+        } = data as User;
+
+        if ( typeof name !== 'string' ) {
+            return appError('【暱稱】需為字串', next);
+        }
 
         if ( !name.trim() ) {
             return appError('【暱稱】必填', next);
@@ -31,11 +38,19 @@ module.exports = {
             return appError('【暱稱】至少 2 個字元以上', next);
         }
 
-        if ( !sex ) {
+        if ( typeof sex !== 'string' ) {
+            return appError('【性別】需為字串', next);
+        }
+
+        if ( !sex.trim() ) {
             return appError('【性別】必填', next);
         }
 
-        if ( !email ) {
+        if ( typeof email !== 'string' ) {
+            return appError('【帳號】需為字串', next);
+        }
+
+        if ( !email.trim() ) {
             return appError('【帳號】必填', next);
         }
 
@@ -43,8 +58,16 @@ module.exports = {
             return appError('請輸入正確信箱格式', next);
         }
 
+        if ( typeof password !== 'string' || typeof data.password !== 'string' ) {
+            return appError('【密碼】需為字串', next);
+        }
+
         if ( !password.trim() ) {
             return appError('【密碼】必填', next);
+        }
+
+        if ( typeof confirmPassword !== 'string' ) {
+            return appError('【確認密碼】需為字串', next);
         }
 
         if ( !confirmPassword.trim() ) {
@@ -78,12 +101,20 @@ module.exports = {
 
         generateJWT(user, res, 201);
     },
-    async searchUserLogin(req, res, next) {
-        const data = req.body;
-        const { email, password } = data;
+    async searchUserLogin(req: Request, res: Response, next: NextFunction) {
+        const data = req.body as User;
+        const { email, password } = data as User;
+
+        if ( typeof email !== 'string' ) {
+            return appError('【帳號】需為字串', next);
+        }
 
         if ( !email.trim() ) {
             return appError('【帳號】必填', next);
+        }
+
+        if ( typeof password !== 'string' || typeof data.password !== 'string' ) {
+            return appError('【密碼】需為字串', next);
         }
 
         if ( !password.trim() ) {
@@ -96,21 +127,29 @@ module.exports = {
 
         data.password = data.password.replace(/['<>]/g, '');
 
-        const user = await UserModel.findOne({ email }).select('+password');
+        const user = await UserModel.findOne({ email }).select('+password') as User;
         if ( !user ) {
             return appError('帳號或密碼錯誤，請重新輸入！', next);
         }
 
-        const isPasswordCorrect = await bcrypt.compare(password, user.password);
+        const isPasswordCorrect = await bcrypt.compare(password, user.password!);
         if ( !isPasswordCorrect ) {
             return appError('帳號或密碼錯誤，請重新輸入！', next);
         }
 
         generateJWT(user, res);
     },
-    async updateUserPassword(req, res, next) {
-        const data = req.body;
-        const { password, confirmPassword } = data;
+    async updateUserPassword(req: CustomRequest, res: Response, next: NextFunction) {
+        const data = req.body as User;
+        const { password, confirmPassword } = data as User;
+
+        if ( typeof password !== 'string' || typeof data.password !== 'string' ) {
+            return appError('【密碼】需為字串', next);
+        }
+
+        if ( typeof confirmPassword !== 'string' ) {
+            return appError('【確認密碼】需為字串', next);
+        }
 
         if ( !password.trim() || !confirmPassword.trim() ) {
             return appError('有欄位未填寫', next);
@@ -132,8 +171,8 @@ module.exports = {
             return appError('【密碼】不一致', next);
         }
 
-        const user = await UserModel.findById(req.user._id).select('+password');
-        const isPasswordSame = await bcrypt.compare(password, user.password);
+        const user = await UserModel.findById(req.user._id).select('+password') as User;
+        const isPasswordSame = await bcrypt.compare(password, user.password!);
         if ( isPasswordSame ) {
             return appError('請重新設置密碼', next);
         }
@@ -142,11 +181,15 @@ module.exports = {
         await UserModel.findByIdAndUpdate(req.user._id, { password: data.password });
         success(res, '密碼重設完成');
     },
-    async updateUserInfo(req, res, next) {
-        const data = req.body;
-        const { avatar, name, sex } = data;
+    async updateUserInfo(req: CustomRequest, res: Response, next: NextFunction) {
+        const data = req.body as User;
+        const { avatar, name, sex } = data as User;
 
         const regexAvatar = /^https/g;
+
+        if ( typeof avatar !== 'string') {
+            return appError('【大頭照】需為網址字串', next);
+        }
 
         if ( !avatar.trim() ) {
             return appError('【大頭照】必填', next);
@@ -154,6 +197,10 @@ module.exports = {
 
         if ( !regexAvatar.test(avatar) ) {
             return appError('【大頭照】網址開頭需為 https', next);
+        }
+
+        if ( typeof name !== 'string' ) {
+            return appError('【暱稱】需為字串', next);
         }
 
         if ( !name.trim() ) {
@@ -164,12 +211,16 @@ module.exports = {
             return appError('【暱稱】至少 2 個字元以上', next);
         }
 
+        if ( typeof sex !== 'string' ) {
+            return appError('【性別】需為字串', next);
+        }
+
         if ( !sex.trim() ) {
             return appError('【性別】必填', next);
         }
 
         if ( sex !== 'male' && sex !== 'female' ) {
-            return appError('【性別】必填', next);
+            return appError('【性別】無此選項', next);
         }
 
         const newUserInfo = await UserModel.findByIdAndUpdate(req.user._id, {
@@ -177,10 +228,10 @@ module.exports = {
             name,
             sex,
             updatedAt: Date.now(),
-        }, { returnDocument: 'after' });
+        }, { returnDocument: 'after' }) as User;
         success(res, newUserInfo);
     },
-    async getUserLikePostList(req, res, next) {
+    async getUserLikePostList(req: CustomRequest, res: Response, next: NextFunction) {
         const result = await PostModel.find(
             {
                 likes: {
@@ -196,7 +247,7 @@ module.exports = {
 
         success(res, result);
     },
-    async followUser(req, res, next) {
+    async followUser(req: CustomRequest, res: Response, next: NextFunction) {
         const { id: myselfID } = req.user;
         const { id: userID } = req.params;
 
@@ -243,7 +294,7 @@ module.exports = {
 
         success(res, '追蹤成功');
     },
-    async cancelFollowUser(req, res, next) {
+    async cancelFollowUser(req: CustomRequest, res: Response, next: NextFunction) {
         const { id: myselfID } = req.user;
         const { id: userID } = req.params;
 
@@ -284,7 +335,7 @@ module.exports = {
 
         success(res, '取消追蹤成功');
     },
-    async getUserFollowing(req, res, next) {
+    async getUserFollowing(req: CustomRequest, res: Response, next: NextFunction) {
         const { id } = req.user;
 
         const result = await UserModel.findById(

@@ -19,15 +19,18 @@ export interface CustomRequest extends Request {
 
 export type AsyncFunction = (req: CustomRequest, res: Response, next: NextFunction) => Promise<T>;
 
+// password 會有 undefined 是回傳資料時保護 password
 export interface User {
   _id: ObjectId;
+  id: string;
   name: string;
   sex: string;
   email: string;
   password?: string;
-  avatar?: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  confirmPassword: string;
+  avatar: string;
+  createdAt: Date;
+  updatedAt: Date;
   followers: ObjectId[] | [];
   following: ObjectId[] | [];
 }
