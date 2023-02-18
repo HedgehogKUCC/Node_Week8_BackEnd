@@ -1,21 +1,24 @@
-const sizeOf = require('image-size');
-const { ImgurClient } = require('imgur');
+import { Request, Response, NextFunction } from 'express';
+
+import sizeOf from 'image-size';
+import { ImgurClient } from 'imgur';
 
 import success from '../services/responseSuccess';
 import appError from '../services/appError';
 
 module.exports = {
-    async upload(req, res, next) {
+    async upload(req: Request, res: Response, next: NextFunction) {
         if ( req.originalUrl !== '/upload' ) {
             return appError(`伺服器收到 ${req.originalUrl} 與 /upload 不符 `, next);
         }
 
-        if ( !req.files.length ) {
+        if ( typeof req.files === 'undefined' || !req.files.length ) {
             return appError('請上傳圖片', next);
         }
 
-        const dimensions = sizeOf(req.files[0].buffer);
-        if ( dimensions.width < 300 ) {
+        const files = req.files as Express.Multer.File[];
+        const dimensions = sizeOf(files[0].buffer);
+        if ( typeof dimensions.width === 'undefined' || dimensions.width < 300 ) {
             return appError('圖片寬至少 300像素以上', next);
         }
 
@@ -30,7 +33,7 @@ module.exports = {
         });
 
         const response = await client.upload({
-            image: req.files[0].buffer.toString('base64'),
+            image: files[0].buffer.toString('base64'),
             type: 'base64',
             album: process.env.IMGUR_ALBUM_ID
         });
