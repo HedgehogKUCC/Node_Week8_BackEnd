@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+import { Router } from 'express';
+const router = Router();
 
 import handleErrorAsync from '../utils/handleErrorAsync';
 const UserController = require('../controllers/UserController');
@@ -16,4 +16,4 @@ router.post('/:id/follow', isAuth, handleErrorAsync(UserController.followUser));
 router.delete('/:id/unfollow', isAuth, handleErrorAsync(UserController.cancelFollowUser));
 router.get('/following', isAuth, handleErrorAsync(UserController.getUserFollowing));
 
-module.exports = router;
+export default router;
