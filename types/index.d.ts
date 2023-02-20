@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { ObjectId } from 'mongoose';
+import { Types } from 'mongoose';
 
 export interface CustomError extends Error {
   statusCode: number;
@@ -20,8 +20,8 @@ export interface CustomRequest extends Request {
 export type AsyncFunction = (req: CustomRequest, res: Response, next: NextFunction) => Promise<T>;
 
 // password 會有 undefined 是回傳資料時保護 password
-export interface User {
-  _id: ObjectId;
+export interface IUser {
+  _id: Types.ObjectId;
   id: string;
   name: string;
   sex: string;
@@ -31,6 +31,6 @@ export interface User {
   avatar: string;
   createdAt: Date;
   updatedAt: Date;
-  followers: ObjectId[] | [];
-  following: ObjectId[] | [];
+  followers: Types.ObjectId[] | [];
+  following: Types.ObjectId[] | [];
 }

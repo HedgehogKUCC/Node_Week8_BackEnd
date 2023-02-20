@@ -4,7 +4,7 @@ import { CustomRequest, User } from '../types/index';
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
 
-const UserModel = require('../models/User');
+import UserModel from '../models/User';
 const PostModel = require('../models/Post');
 
 import generateJWT from '../utils/generateJWT';
@@ -348,6 +348,10 @@ module.exports = {
             }
         )
 
-        success(res, result);
+        if (!result) {
+            return appError('【取得個人追蹤名單】失敗', next);
+        }
+
+        success(res, result!);
     }
 }

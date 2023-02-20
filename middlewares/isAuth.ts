@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const UserModel = require('../models/User');
+import UserModel from '../models/User';
 
 import handleErrorAsync from '../utils/handleErrorAsync';
 import appError from '../services/appError';

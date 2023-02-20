@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+import { Schema, model }  from 'mongoose';
+import { IUser } from '../types/index';
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema<IUser>(
     {
         name: {
             type: String,
@@ -47,7 +48,7 @@ const userSchema = new mongoose.Schema(
         followers: [
             {
                 user: {
-                    type: mongoose.Schema.ObjectId,
+                    type: Schema.Types.ObjectId,
                     ref: 'User',
                 },
                 createdAt: {
@@ -59,7 +60,7 @@ const userSchema = new mongoose.Schema(
         following: [
             {
                 user: {
-                    type: mongoose.Schema.ObjectId,
+                    type: Schema.Types.ObjectId,
                     ref: 'User',
                 },
                 createdAt: {
@@ -74,6 +75,6 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-const UserModel = mongoose.model('User', userSchema);
+const UserModel = model<IUser>('User', userSchema);
 
-module.exports = UserModel;
+export default UserModel;
