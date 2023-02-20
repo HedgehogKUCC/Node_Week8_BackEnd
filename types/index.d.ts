@@ -34,3 +34,12 @@ export interface IUser {
   followers: Types.ObjectId[] | [];
   following: Types.ObjectId[] | [];
 }
+
+export interface IPost {
+  userID: Types.ObjectId;
+  content: string;
+  image: string;
+  likes: Types.ObjectId[] | [];
+  createdAt: Date;
+  updatedAt: Date;
+}

@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
+import { IPost } from '../types/index';
 
-const postSchema = new mongoose.Schema(
+const postSchema = new Schema<IPost>(
     {
         userID: {
-            type: mongoose.Schema.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'User',
             required: [true, '請登入帳號']
         },
@@ -19,7 +20,7 @@ const postSchema = new mongoose.Schema(
         },
         likes: [
             {
-                type: mongoose.Schema.ObjectId,
+                type: Schema.Types.ObjectId,
                 ref: 'User',
             }
         ],
@@ -45,6 +46,6 @@ postSchema.virtual('comments', {
     localField: '_id',
 });
 
-const PostModel = mongoose.model('Post', postSchema);
+const PostModel = model<IPost>('Post', postSchema);
 
-module.exports = PostModel;
+export default PostModel;

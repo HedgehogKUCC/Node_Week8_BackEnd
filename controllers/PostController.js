@@ -1,4 +1,4 @@
-const PostModel = require('../models/Post');
+import PostModel from '../models/Post';
 const CommentModel = require('../models/Comment');
 
 import success from '../services/responseSuccess';

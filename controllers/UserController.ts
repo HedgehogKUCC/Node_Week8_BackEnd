@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import validator from 'validator';
 
 import UserModel from '../models/User';
-const PostModel = require('../models/Post');
+import PostModel from '../models/Post';
 
 import generateJWT from '../utils/generateJWT';
 
