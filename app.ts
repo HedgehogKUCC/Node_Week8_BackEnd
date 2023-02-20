@@ -10,7 +10,7 @@ import usersRouter from './routes/users';
 
 const postsRouter = require('./routes/posts');
 
-import { CustomError } from './types/index';
+import { ICustomError } from './types/index';
 
 const app = express();
 import './connections/mongoDB';
@@ -35,13 +35,13 @@ app.use('/posts', postsRouter);
 app.use('/upload', uploadRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-    const error = new Error('無此路由') as CustomError;
+    const error = new Error('無此路由') as ICustomError;
     error.statusCode = 404;
     error.isOperational = true;
     next(error);
 });
 
-const resErrorProd = (err: CustomError, res: Response) => {
+const resErrorProd = (err: ICustomError, res: Response) => {
     if ( err.isOperational ) {
         if ( err.columns ) {
             return res.status(err.statusCode).send({
@@ -71,7 +71,7 @@ const resErrorProd = (err: CustomError, res: Response) => {
     });
 }
 
-const resErrorDev = (err: CustomError, res: Response) => {
+const resErrorDev = (err: ICustomError, res: Response) => {
     res.status(err.statusCode).send({
         result: false,
         name: err.name,
@@ -81,7 +81,7 @@ const resErrorDev = (err: CustomError, res: Response) => {
     });
 }
 
-app.use((err: CustomError, req: Request, res: Response, next: NextFunction) => {
+app.use((err: ICustomError, req: Request, res: Response, next: NextFunction) => {
     err.statusCode = err.statusCode || 500;
 
     if ( err.message.indexOf('圖片檔案格式') !== -1 ) {

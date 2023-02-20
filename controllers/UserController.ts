@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { CustomRequest, User } from '../types/index';
+import { ICustomRequest, IUser } from '../types/index';
 
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
@@ -13,18 +13,18 @@ import success from '../services/responseSuccess';
 import appError from '../services/appError';
 
 module.exports = {
-    async getUser(req: CustomRequest, res: Response, next: NextFunction) {
+    async getUser(req: ICustomRequest, res: Response, next: NextFunction) {
         success(res, req.user);
     },
     async insertUser(req: Request, res: Response, next: NextFunction) {
-        const data = req.body as User;
+        const data = req.body as IUser;
         const {
             name,
             sex,
             email,
             password,
             confirmPassword,
-        } = data as User;
+        } = data as IUser;
 
         if ( typeof name !== 'string' ) {
             return appError('【暱稱】需為字串', next);
@@ -102,8 +102,8 @@ module.exports = {
         generateJWT(user, res, 201);
     },
     async searchUserLogin(req: Request, res: Response, next: NextFunction) {
-        const data = req.body as User;
-        const { email, password } = data as User;
+        const data = req.body as IUser;
+        const { email, password } = data as IUser;
 
         if ( typeof email !== 'string' ) {
             return appError('【帳號】需為字串', next);
@@ -127,7 +127,7 @@ module.exports = {
 
         data.password = data.password.replace(/['<>]/g, '');
 
-        const user = await UserModel.findOne({ email }).select('+password') as User;
+        const user = await UserModel.findOne({ email }).select('+password') as IUser;
         if ( !user ) {
             return appError('帳號或密碼錯誤，請重新輸入！', next);
         }
@@ -139,9 +139,9 @@ module.exports = {
 
         generateJWT(user, res);
     },
-    async updateUserPassword(req: CustomRequest, res: Response, next: NextFunction) {
-        const data = req.body as User;
-        const { password, confirmPassword } = data as User;
+    async updateUserPassword(req: ICustomRequest, res: Response, next: NextFunction) {
+        const data = req.body as IUser;
+        const { password, confirmPassword } = data as IUser;
 
         if ( typeof password !== 'string' || typeof data.password !== 'string' ) {
             return appError('【密碼】需為字串', next);
@@ -171,7 +171,7 @@ module.exports = {
             return appError('【密碼】不一致', next);
         }
 
-        const user = await UserModel.findById(req.user._id).select('+password') as User;
+        const user = await UserModel.findById(req.user._id).select('+password') as IUser;
         const isPasswordSame = await bcrypt.compare(password, user.password!);
         if ( isPasswordSame ) {
             return appError('請重新設置密碼', next);
@@ -181,9 +181,9 @@ module.exports = {
         await UserModel.findByIdAndUpdate(req.user._id, { password: data.password });
         success(res, '密碼重設完成');
     },
-    async updateUserInfo(req: CustomRequest, res: Response, next: NextFunction) {
-        const data = req.body as User;
-        const { avatar, name, sex } = data as User;
+    async updateUserInfo(req: ICustomRequest, res: Response, next: NextFunction) {
+        const data = req.body as IUser;
+        const { avatar, name, sex } = data as IUser;
 
         const regexAvatar = /^https/g;
 
@@ -228,10 +228,10 @@ module.exports = {
             name,
             sex,
             updatedAt: Date.now(),
-        }, { returnDocument: 'after' }) as User;
+        }, { returnDocument: 'after' }) as IUser;
         success(res, newUserInfo);
     },
-    async getUserLikePostList(req: CustomRequest, res: Response, next: NextFunction) {
+    async getUserLikePostList(req: ICustomRequest, res: Response, next: NextFunction) {
         const result = await PostModel.find(
             {
                 likes: {
@@ -247,7 +247,7 @@ module.exports = {
 
         success(res, result);
     },
-    async followUser(req: CustomRequest, res: Response, next: NextFunction) {
+    async followUser(req: ICustomRequest, res: Response, next: NextFunction) {
         const { id: myselfID } = req.user;
         const { id: userID } = req.params;
 
@@ -294,7 +294,7 @@ module.exports = {
 
         success(res, '追蹤成功');
     },
-    async cancelFollowUser(req: CustomRequest, res: Response, next: NextFunction) {
+    async cancelFollowUser(req: ICustomRequest, res: Response, next: NextFunction) {
         const { id: myselfID } = req.user;
         const { id: userID } = req.params;
 
@@ -335,7 +335,7 @@ module.exports = {
 
         success(res, '取消追蹤成功');
     },
-    async getUserFollowing(req: CustomRequest, res: Response, next: NextFunction) {
+    async getUserFollowing(req: ICustomRequest, res: Response, next: NextFunction) {
         const { id } = req.user;
 
         const result = await UserModel.findById(

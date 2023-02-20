@@ -1,19 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
 import { Types } from 'mongoose';
 
-export interface CustomError extends Error {
+export interface ICustomError extends Error {
   statusCode: number;
   isOperational: boolean;
   columns: string;
   errors: string;
 }
 
-export interface CustomHttpServerError extends Error {
+export interface ICustomHttpServerError extends Error {
   syscall: string;
   code: string;
 }
 
-export interface CustomRequest extends Request {
+export interface ICustomRequest extends Request {
   user: User;
 }
 

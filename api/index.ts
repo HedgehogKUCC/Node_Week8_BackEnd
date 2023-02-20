@@ -8,7 +8,7 @@ import app from '../app';
 import http from 'http';
 var debug = require('debug')('backend:server');
 
-import { CustomHttpServerError } from '../types/index';
+import { ICustomHttpServerError } from '../types/index';
 
 /**
  * Get port from environment and store in Express.
@@ -55,7 +55,7 @@ function normalizePort(val: number | string | false) {
  * Event listener for HTTP server "error" event.
  */
 
-function onError(error: CustomHttpServerError) {
+function onError(error: ICustomHttpServerError) {
   if (error.syscall !== 'listen') {
     throw error;
   }
