@@ -2,7 +2,8 @@ import { Router } from 'express';
 const router = Router();
 
 import handleErrorAsync from '../utils/handleErrorAsync';
-const UserController = require('../controllers/UserController');
+
+import UserController from '../controllers/UserController';
 
 import isAuth from '../middlewares/isAuth';
 

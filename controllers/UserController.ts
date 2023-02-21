@@ -12,7 +12,7 @@ import generateJWT from '../utils/generateJWT';
 import success from '../services/responseSuccess';
 import appError from '../services/appError';
 
-module.exports = {
+export default {
     async getUser(req: ICustomRequest, res: Response, next: NextFunction) {
         success(res, req.user);
     },

@@ -6,7 +6,7 @@ import { ImgurClient } from 'imgur';
 import success from '../services/responseSuccess';
 import appError from '../services/appError';
 
-module.exports = {
+export default {
     async upload(req: Request, res: Response, next: NextFunction) {
         if ( req.originalUrl !== '/upload' ) {
             return appError(`伺服器收到 ${req.originalUrl} 與 /upload 不符 `, next);
