@@ -1,5 +1,5 @@
 import PostModel from '../models/Post';
-const CommentModel = require('../models/Comment');
+import CommentModel from '../models/Comment';
 
 import success from '../services/responseSuccess';
 import appError from '../services/appError';
@@ -170,6 +170,11 @@ module.exports = {
             {
                 path: 'comments',
                 select: 'userID comment',
+                options: {
+                    sort: {
+                        createdAt: -1
+                    }
+                }
             }
         );
 

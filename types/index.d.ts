@@ -43,3 +43,10 @@ export interface IPost {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface IComment {
+  comment: string;
+  createdAt: Date;
+  userID: Types.ObjectId;
+  postID: Types.ObjectId;
+}

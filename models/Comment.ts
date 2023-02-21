@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
+import { IComment } from '../types/index';
 
-const commentSchema = new mongoose.Schema(
+const commentSchema = new Schema<IComment>(
     {
         comment: {
             type: String,
@@ -13,12 +14,12 @@ const commentSchema = new mongoose.Schema(
             select: true,
         },
         userID: {
-            type: mongoose.Schema.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'User',
             required: [true, '請登入帳號'],
         },
         postID: {
-            type: mongoose.Schema.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'Post',
             required: [true, '請選擇貼文'],
         }
@@ -32,13 +33,13 @@ commentSchema.pre(/^find/, function(next) {
     this.populate(
         {
             path: 'userID',
-            select: 'name avatar'
+            select: 'name avatar',
         }
-    ).sort('-createdAt');
+    );
 
     next();
 });
 
-const CommentModel = mongoose.model('Comment', commentSchema);
+const CommentModel = model<IComment>('Comment', commentSchema);
 
-module.exports = CommentModel;
+export default CommentModel;
