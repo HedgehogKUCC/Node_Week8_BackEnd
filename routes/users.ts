@@ -13,8 +13,8 @@ router.patch('/updatePassword', isAuth, handleErrorAsync(UserController.updateUs
 router.get('/profile', isAuth, handleErrorAsync(UserController.getUser));
 router.patch('/profile', isAuth, handleErrorAsync(UserController.updateUserInfo));
 router.get('/getLikeList', isAuth, handleErrorAsync(UserController.getUserLikePostList));
-router.post('/:id/follow', isAuth, handleErrorAsync(UserController.followUser));
-router.delete('/:id/unfollow', isAuth, handleErrorAsync(UserController.cancelFollowUser));
+router.post('/:userID/follow', isAuth, handleErrorAsync(UserController.followUser));
+router.delete('/:userID/unfollow', isAuth, handleErrorAsync(UserController.cancelFollowUser));
 router.get('/following', isAuth, handleErrorAsync(UserController.getUserFollowing));
 
 export default router;

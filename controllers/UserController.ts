@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { ICustomRequest, IUser } from '../types/index';
+import { isValidObjectId } from 'mongoose';
 
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
@@ -14,17 +15,21 @@ import appError from '../services/appError';
 
 export default {
     async getUser(req: ICustomRequest, res: Response, next: NextFunction) {
+
+        if ( !isValidObjectId(req.user._id) ) {
+            return appError('用戶 ID 格式有誤', next);
+        }
+
         success(res, req.user);
     },
-    async insertUser(req: Request, res: Response, next: NextFunction) {
-        const data = req.body as IUser;
+    async insertUser(req: Request<unknown, unknown, IUser, unknown>, res: Response, next: NextFunction) {
         const {
             name,
             sex,
             email,
             password,
-            confirmPassword,
-        } = data as IUser;
+            confirmPassword
+        } = req.body;
 
         if ( typeof name !== 'string' ) {
             return appError('【暱稱】需為字串', next);
@@ -58,7 +63,7 @@ export default {
             return appError('請輸入正確信箱格式', next);
         }
 
-        if ( typeof password !== 'string' || typeof data.password !== 'string' ) {
+        if ( typeof password !== 'string' ) {
             return appError('【密碼】需為字串', next);
         }
 
@@ -91,19 +96,19 @@ export default {
         }
 
         const isExistedEmail = await UserModel.find({ email });
+
         if ( isExistedEmail.length > 0 ) {
             return appError('【帳號】已被註冊', next);
         }
 
-        data.password = await bcrypt.hash(data.password, 12);
+        req.body.password = await bcrypt.hash(password, 12);
 
-        const user = await UserModel.create(data);
+        const user = await UserModel.create(req.body);
 
         generateJWT(user, res, 201);
     },
-    async searchUserLogin(req: Request, res: Response, next: NextFunction) {
-        const data = req.body as IUser;
-        const { email, password } = data as IUser;
+    async searchUserLogin(req: Request<unknown, unknown, IUser, unknown>, res: Response, next: NextFunction) {
+        const { email, password } = req.body;
 
         if ( typeof email !== 'string' ) {
             return appError('【帳號】需為字串', next);
@@ -113,7 +118,7 @@ export default {
             return appError('【帳號】必填', next);
         }
 
-        if ( typeof password !== 'string' || typeof data.password !== 'string' ) {
+        if ( typeof password !== 'string' ) {
             return appError('【密碼】需為字串', next);
         }
 
@@ -125,25 +130,27 @@ export default {
             return appError('請輸入正確信箱格式', next);
         }
 
-        data.password = data.password.replace(/['<>]/g, '');
+        req.body.password = password.replace(/['<>]/g, '');
 
-        const user = await UserModel.findOne({ email }).select('+password') as IUser;
+        const user = await UserModel.findOne({ email }).select('+password');
+
         if ( !user ) {
             return appError('帳號或密碼錯誤，請重新輸入！', next);
         }
 
-        const isPasswordCorrect = await bcrypt.compare(password, user.password!);
+        const isPasswordCorrect = await bcrypt.compare(req.body.password, user.password!);
+
         if ( !isPasswordCorrect ) {
             return appError('帳號或密碼錯誤，請重新輸入！', next);
         }
 
         generateJWT(user, res);
     },
-    async updateUserPassword(req: ICustomRequest, res: Response, next: NextFunction) {
-        const data = req.body as IUser;
-        const { password, confirmPassword } = data as IUser;
+    async updateUserPassword(req: Request<unknown, unknown, IUser, unknown>, res: Response, next: NextFunction) {
+        const { password, confirmPassword } = req.body;
+        const reqUser = req.user as ICustomRequest['user'];
 
-        if ( typeof password !== 'string' || typeof data.password !== 'string' ) {
+        if ( typeof password !== 'string' ) {
             return appError('【密碼】需為字串', next);
         }
 
@@ -171,19 +178,31 @@ export default {
             return appError('【密碼】不一致', next);
         }
 
-        const user = await UserModel.findById(req.user._id).select('+password') as IUser;
+        if ( !isValidObjectId(reqUser._id) ) {
+            return appError('用戶 ID 格式有誤', next);
+        }
+
+        const user = await UserModel.findById(reqUser._id).select('+password');
+
+        if ( !user ) {
+            return appError('【重設密碼】無此用戶', next);
+        }
+
         const isPasswordSame = await bcrypt.compare(password, user.password!);
+
         if ( isPasswordSame ) {
             return appError('請重新設置密碼', next);
         }
 
-        data.password = await bcrypt.hash(data.password, 12);
-        await UserModel.findByIdAndUpdate(req.user._id, { password: data.password });
-        success(res, '密碼重設完成');
+        req.body.password = await bcrypt.hash(password, 12);
+
+        await UserModel.findByIdAndUpdate(reqUser._id, { 'password': req.body.password });
+
+        success(res, '重設密碼完成');
     },
-    async updateUserInfo(req: ICustomRequest, res: Response, next: NextFunction) {
-        const data = req.body as IUser;
-        const { avatar, name, sex } = data as IUser;
+    async updateUserInfo(req: Request<unknown, unknown, IUser, unknown>, res: Response, next: NextFunction) {
+        const { avatar, name, sex } = req.body;
+        const reqUser = req.user as ICustomRequest['user'];
 
         const regexAvatar = /^https/g;
 
@@ -223,19 +242,33 @@ export default {
             return appError('【性別】無此選項', next);
         }
 
-        const newUserInfo = await UserModel.findByIdAndUpdate(req.user._id, {
+        if ( !isValidObjectId(reqUser._id) ) {
+            return appError('用戶 ID 格式有誤', next);
+        }
+
+        const newUserInfo = await UserModel.findByIdAndUpdate(reqUser._id, {
             avatar,
             name,
             sex,
             updatedAt: Date.now(),
-        }, { returnDocument: 'after' }) as IUser;
+        }, { returnDocument: 'after' });
+
+        if ( !newUserInfo ) {
+            return appError('【更新個人資料】無此用戶', next);
+        }
+
         success(res, newUserInfo);
     },
     async getUserLikePostList(req: ICustomRequest, res: Response, next: NextFunction) {
+
+        if ( !isValidObjectId(req.user._id) ) {
+            return appError('用戶 ID 格式有誤', next);
+        }
+
         const result = await PostModel.find(
             {
                 likes: {
-                    $in: [ req.user.id ]
+                    $in: [ req.user._id ]
                 }
             }
         ).populate(
@@ -247,22 +280,34 @@ export default {
 
         success(res, result);
     },
-    async followUser(req: ICustomRequest, res: Response, next: NextFunction) {
-        const { id: myselfID } = req.user;
-        const { id: userID } = req.params;
+    async followUser(req: Request<{ userID: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
+        const { userID } = req.params;
+        const reqUser = req.user as ICustomRequest['user'];
 
-        if ( myselfID === userID ) {
+        if ( !isValidObjectId(userID) ) {
+            return appError('追蹤的用戶 ID 格式有誤', next);
+        }
+
+        if ( !isValidObjectId(reqUser._id) ) {
+            return appError('用戶 ID 格式有誤', next);
+        }
+
+        // Types.ObjectId 需要轉換為 string 才能比對是否為同一人
+        const reqUserID = reqUser._id.toString();
+
+        if ( reqUserID === userID ) {
             return appError('無法追蹤自己唷', next);
         }
 
         const result = await UserModel.findById(userID).exec();
+
         if ( !result ) {
             return appError('沒有此帳號', next);
         }
 
-        await UserModel.updateOne(
+        const resAddFollowing = await UserModel.updateOne(
             {
-                _id: myselfID,
+                _id: reqUser._id,
                 "following.user": {
                     $ne: userID
                 }
@@ -276,40 +321,60 @@ export default {
             }
         )
 
-        await UserModel.updateOne(
+        if ( resAddFollowing.modifiedCount === 0 ) {
+            return appError('追蹤失敗', next);
+        }
+
+        const resAddFollowers = await UserModel.updateOne(
             {
                 _id: userID,
                 "followers.user": {
-                    $ne: myselfID
+                    $ne: reqUser._id
                 }
             },
             {
                 $addToSet: {
                     followers: {
-                        user: myselfID
+                        user: reqUser._id
                     }
                 }
             }
         )
 
+        if ( resAddFollowers.modifiedCount === 0 ) {
+            return appError('新增追蹤者失敗', next);
+        }
+
         success(res, '追蹤成功');
     },
-    async cancelFollowUser(req: ICustomRequest, res: Response, next: NextFunction) {
-        const { id: myselfID } = req.user;
-        const { id: userID } = req.params;
+    async cancelFollowUser(req: Request<{ userID: string }>, res: Response, next: NextFunction) {
+        const { userID } = req.params;
+        const reqUser = req.user as ICustomRequest['user'];
 
-        if ( myselfID === userID ) {
+        if ( !isValidObjectId(userID) ) {
+            return appError('取消追蹤的用戶 ID 格式有誤', next);
+        }
+
+        if ( !isValidObjectId(reqUser._id) ) {
+            return appError('用戶 ID 格式有誤', next);
+        }
+        
+        // Types.ObjectId 需要轉換為 string 才能比對是否為同一人
+        const reqUserID = reqUser._id.toString();
+
+        if ( reqUserID === userID ) {
             return appError('無法取消追蹤自己唷', next);
         }
 
         const result = await UserModel.findById(userID).exec();
+
         if ( !result ) {
             return appError('沒有此帳號', next);
         }
 
-        await UserModel.updateOne(
+        const resPullFollowing = await UserModel.updateOne(
             {
-                _id: myselfID,
+                _id: reqUser._id,
             },
             {
                 $pull: {
@@ -320,26 +385,38 @@ export default {
             }
         )
 
-        await UserModel.updateOne(
+        if ( resPullFollowing.modifiedCount === 0 ) {
+            return appError('取消追蹤失敗', next);
+        }
+
+        const resPullFollowers = await UserModel.updateOne(
             {
                 _id: userID,
             },
             {
                 $pull: {
                     followers: {
-                        user: myselfID,
+                        user: reqUser._id,
                     }
                 }
             }
         )
 
+        if ( resPullFollowers.modifiedCount === 0 ) {
+            return appError('移除追蹤者失敗', next);
+        }
+
         success(res, '取消追蹤成功');
     },
     async getUserFollowing(req: ICustomRequest, res: Response, next: NextFunction) {
-        const { id } = req.user;
+        const { _id } = req.user;
+
+        if ( !isValidObjectId(_id) ) {
+            return appError('用戶 ID 格式有誤', next);
+        }
 
         const result = await UserModel.findById(
-            id,
+            _id,
             '-followers',
         ).populate(
             {
