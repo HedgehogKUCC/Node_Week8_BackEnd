@@ -14,7 +14,7 @@ export interface ICustomHttpServerError extends Error {
 }
 
 export interface ICustomRequest extends Request {
-  user: User;
+  user: IUser;
 }
 
 export type AsyncFunction = (req: CustomRequest, res: Response, next: NextFunction) => Promise<T>;
@@ -22,7 +22,6 @@ export type AsyncFunction = (req: CustomRequest, res: Response, next: NextFuncti
 // password 會有 undefined 是回傳資料時保護 password
 export interface IUser {
   _id: Types.ObjectId;
-  id: string;
   name: string;
   sex: string;
   email: string;
