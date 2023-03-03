@@ -8,21 +8,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-const jwt = require('jsonwebtoken');
-const UserModel = require('../models/User');
-const handleErrorAsync = require('../utils/handleErrorAsync');
-const appError = require('../utils/appError');
-module.exports = handleErrorAsync((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    let token;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+const User_1 = __importDefault(require("../models/User"));
+const handleErrorAsync_1 = __importDefault(require("../utils/handleErrorAsync"));
+const appError_1 = __importDefault(require("../services/appError"));
+exports.default = (0, handleErrorAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    let token = undefined;
     if (req.headers.authorization &&
         req.headers.authorization.startsWith('Bearer')) {
         token = req.headers.authorization.split(' ')[1];
     }
     if (!token) {
-        return appError('請登入帳號', next, 401);
+        return (0, appError_1.default)('請登入帳號', next, 401);
     }
     const decodeJWT = yield new Promise((resolve, reject) => {
-        jwt.verify(token, process.env.JWT_SECRET, (err, payload) => {
+        jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET, (err, payload) => {
             if (err) {
                 reject(err);
             }
@@ -31,9 +35,12 @@ module.exports = handleErrorAsync((req, res, next) => __awaiter(void 0, void 0, 
             }
         });
     });
-    req.user = yield UserModel.findById(decodeJWT.id);
+    if (typeof decodeJWT === 'undefined' || typeof decodeJWT === 'string') {
+        return (0, appError_1.default)('請登入帳號', next, 401);
+    }
+    req.user = yield User_1.default.findById(decodeJWT.id);
     if (!req.user) {
-        return appError('請登入帳號', next, 401);
+        return (0, appError_1.default)('請登入帳號', next, 401);
     }
     next();
 }));

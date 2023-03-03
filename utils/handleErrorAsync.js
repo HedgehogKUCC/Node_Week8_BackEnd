@@ -1,5 +1,6 @@
 "use strict";
-module.exports = (func) => {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = (func) => {
     return (req, res, next) => {
         func(req, res, next).catch((err) => {
             next(err);

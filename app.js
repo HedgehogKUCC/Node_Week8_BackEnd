@@ -9,9 +9,9 @@ const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
 const index_1 = __importDefault(require("./routes/index"));
-const usersRouter = require('./routes/users');
-const postsRouter = require('./routes/posts');
-const uploadRouter = require('./routes/upload');
+const upload_1 = __importDefault(require("./routes/upload"));
+const users_1 = __importDefault(require("./routes/users"));
+const posts_1 = __importDefault(require("./routes/posts"));
 const app = (0, express_1.default)();
 require("./connections/mongoDB");
 app.use((0, cors_1.default)());
@@ -27,9 +27,9 @@ process.on('uncaughtException', err => {
     process.exit(1);
 });
 app.use('/', index_1.default);
-app.use('/users', usersRouter);
-app.use('/posts', postsRouter);
-app.use('/upload', uploadRouter);
+app.use('/users', users_1.default);
+app.use('/posts', posts_1.default);
+app.use('/upload', upload_1.default);
 app.use((req, res, next) => {
     const error = new Error('無此路由');
     error.statusCode = 404;
@@ -67,7 +67,7 @@ const resErrorDev = (err, res) => {
     res.status(err.statusCode).send({
         result: false,
         name: err.name,
-        msg: err.message,
+        message: err.message,
         stack: err.stack,
         error: err,
     });
@@ -105,6 +105,12 @@ app.use((err, req, res, next) => {
     }
     if (err.name === 'CastError') {
         err.message = '傳入的值與伺服器定義型別有誤';
+        err.statusCode = 400;
+        err.isOperational = true;
+        return resErrorProd(err, res);
+    }
+    if (err.name === 'SyntaxError') {
+        err.message = err.message;
         err.statusCode = 400;
         err.isOperational = true;
         return resErrorProd(err, res);

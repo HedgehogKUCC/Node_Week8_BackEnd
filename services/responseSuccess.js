@@ -1,5 +1,6 @@
 "use strict";
-module.exports = (res, data, httpStatus = 200) => {
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = (res, data, httpStatus = 200) => {
     /**
      * Vercel
      * https://vercel.com/guides/using-express-with-vercel#standalone-express

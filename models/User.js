@@ -1,6 +1,7 @@
 "use strict";
-const mongoose = require('mongoose');
-const userSchema = new mongoose.Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = require("mongoose");
+const userSchema = new mongoose_1.Schema({
     name: {
         type: String,
         required: [true, '【暱稱】必填'],
@@ -46,7 +47,7 @@ const userSchema = new mongoose.Schema({
     followers: [
         {
             user: {
-                type: mongoose.Schema.ObjectId,
+                type: mongoose_1.Schema.Types.ObjectId,
                 ref: 'User',
             },
             createdAt: {
@@ -58,7 +59,7 @@ const userSchema = new mongoose.Schema({
     following: [
         {
             user: {
-                type: mongoose.Schema.ObjectId,
+                type: mongoose_1.Schema.Types.ObjectId,
                 ref: 'User',
             },
             createdAt: {
@@ -70,5 +71,5 @@ const userSchema = new mongoose.Schema({
 }, {
     versionKey: false,
 });
-const UserModel = mongoose.model('User', userSchema);
-module.exports = UserModel;
+const UserModel = (0, mongoose_1.model)('User', userSchema);
+exports.default = UserModel;

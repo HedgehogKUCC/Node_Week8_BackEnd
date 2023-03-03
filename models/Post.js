@@ -1,8 +1,9 @@
 "use strict";
-const mongoose = require('mongoose');
-const postSchema = new mongoose.Schema({
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose_1 = require("mongoose");
+const postSchema = new mongoose_1.Schema({
     userID: {
-        type: mongoose.Schema.ObjectId,
+        type: mongoose_1.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, '請登入帳號']
     },
@@ -18,7 +19,7 @@ const postSchema = new mongoose.Schema({
     },
     likes: [
         {
-            type: mongoose.Schema.ObjectId,
+            type: mongoose_1.Schema.Types.ObjectId,
             ref: 'User',
         }
     ],
@@ -40,5 +41,5 @@ postSchema.virtual('comments', {
     foreignField: 'postID',
     localField: '_id',
 });
-const PostModel = mongoose.model('Post', postSchema);
-module.exports = PostModel;
+const PostModel = (0, mongoose_1.model)('Post', postSchema);
+exports.default = PostModel;
