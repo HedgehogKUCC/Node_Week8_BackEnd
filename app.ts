@@ -7,8 +7,7 @@ import logger from 'morgan';
 import indexRouter from './routes/index';
 import uploadRouter from './routes/upload';
 import usersRouter from './routes/users';
-
-const postsRouter = require('./routes/posts');
+import postsRouter from './routes/posts';
 
 import { ICustomError } from './types/index';
 
