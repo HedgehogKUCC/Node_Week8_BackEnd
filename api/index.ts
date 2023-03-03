@@ -6,7 +6,10 @@
 
 import app from '../app';
 import http from 'http';
-var debug = require('debug')('backend:server');
+
+// var debug = require('debug')('backend:server');
+import Debug from 'debug';
+const debug = Debug('backend:server');
 
 import { ICustomHttpServerError } from '../types/index';
 
