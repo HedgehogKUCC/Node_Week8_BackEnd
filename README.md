@@ -16,4 +16,8 @@ $ npm run tsc
 $ npm run dev
 ```
 
+# Local connect MongoDB Cloud
 
+```bash
+$ npm run prod
+```
