@@ -74,7 +74,7 @@ const resErrorDev = (err: ICustomError, res: Response) => {
     res.status(err.statusCode).send({
         result: false,
         name: err.name,
-        msg: err.message,
+        message: err.message,
         stack: err.stack,
         error: err,
     });
@@ -120,6 +120,13 @@ app.use((err: ICustomError, req: Request, res: Response, next: NextFunction) => 
 
     if ( err.name === 'CastError' ) {
         err.message = '傳入的值與伺服器定義型別有誤';
+        err.statusCode = 400;
+        err.isOperational = true;
+        return resErrorProd(err, res);
+    }
+
+    if ( err.name === 'SyntaxError' ) {
+        err.message = err.message;
         err.statusCode = 400;
         err.isOperational = true;
         return resErrorProd(err, res);
