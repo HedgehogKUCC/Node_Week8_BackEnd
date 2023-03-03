@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { Types, isValidObjectId } from 'mongoose';
+import { isValidObjectId } from 'mongoose';
 
 import { ICustomRequest } from '../types/index';
 
@@ -10,15 +10,15 @@ import success from '../services/responseSuccess';
 import appError from '../services/appError';
 
 export default {
-    async getPosts(req: Request<unknown, unknown, unknown, { s?: string, q?: string}>, res: Response, next: NextFunction) {
+    async getPosts(req: Request<unknown, unknown, unknown, { s?: string, q?: string }>, res: Response, next: NextFunction) {
         const { s, q } = req.query;
         const timeSort = s === 'asc' ? 'createdAt' : '-createdAt';
-        let userQuery: object | { content: RegExp } = {};
+        let userQuery: { content?: RegExp; } = {};
 
-        if (typeof q !== 'string') {
+        if ( typeof q !== 'string' ) {
             userQuery = {};
         } else {
-            userQuery = { 'content': new RegExp(q) };
+            userQuery = { content: new RegExp(q) };
         }
 
         const result = await PostModel.find(userQuery).populate({
@@ -36,7 +36,7 @@ export default {
             return appError('用戶 ID 格式有誤', next);
         }
         
-        if (typeof content !== 'string') {
+        if ( typeof content !== 'string' ) {
             return appError('【貼文內容】格式有誤', next);
         }
 
@@ -64,7 +64,7 @@ export default {
 
         success(res, '成功刪除全部貼文');
     },
-    async delSinglePost(req: Request<{ postID: Types.ObjectId }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
+    async delSinglePost(req: Request<{ postID?: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
 
         if ( !isValidObjectId(postID) ) {
@@ -79,7 +79,7 @@ export default {
 
         success(res, '成功刪除單筆貼文');
     },
-    async updatePostContent(req: Request<{ postID: Types.ObjectId }, unknown, { content?: string }, unknown>, res: Response, next: NextFunction) {
+    async updatePostContent(req: Request<{ postID?: string }, unknown, { content?: string }, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
         const { content } = req.body;
 
@@ -110,7 +110,7 @@ export default {
 
         success(res, result);
     },
-    async getSinglePost(req: Request<{ postID: Types.ObjectId }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
+    async getSinglePost(req: Request<{ postID?: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
 
         if ( !isValidObjectId(postID) ) {
@@ -125,12 +125,17 @@ export default {
 
         success(res, result);
     },
-    async getUserPosts(req: Request<{ userID: Types.ObjectId }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
+    async getUserPosts(req: Request<{ userID?: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
         const { userID } = req.params;
 
         if ( !isValidObjectId(userID) ) {
             return appError('用戶 ID 格式有誤', next);
         }
+
+        /*
+            不用驗證 userID 是否存在資料庫
+            避免被用來測試
+        */
 
         const result = await PostModel.find({ userID }).populate({
             path: 'userID',
@@ -139,7 +144,7 @@ export default {
 
         success(res, result);
     },
-    async clickPostLike(req: Request<{ postID: Types.ObjectId }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
+    async clickPostLike(req: Request<{ postID?: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
         const reqUser = req.user as ICustomRequest['user'];
 
@@ -149,6 +154,16 @@ export default {
 
         if ( !isValidObjectId(reqUser._id) ) {
             return appError('用戶 ID 格式有誤', next);
+        }
+
+        /*
+            自己可以點自己的文章 讚
+        */
+
+        const originPostInfo = await PostModel.findById(postID).exec();
+
+        if ( !originPostInfo ) {
+            return appError('沒有這則貼文', next);
         }
 
         const result = await PostModel.findByIdAndUpdate(
@@ -164,13 +179,13 @@ export default {
             }
         );
 
-        if ( !result ) {
-            return appError('沒有這則貼文', next);
+        if ( originPostInfo.likes.length === result!.likes.length ) {
+            return appError('這則貼文已點過讚囉', next);
         }
 
-        success(res, result);
+        success(res, result!);
     },
-    async cancelPostLike(req: Request<{ postID: Types.ObjectId }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
+    async cancelPostLike(req: Request<{ postID?: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
         const reqUser = req.user as ICustomRequest['user'];
 
@@ -180,6 +195,12 @@ export default {
 
         if ( !isValidObjectId(reqUser._id) ) {
             return appError('用戶 ID 格式有誤', next);
+        }
+
+        const originPostInfo = await PostModel.findById(postID).exec();
+
+        if ( !originPostInfo ) {
+            return appError('沒有這則貼文', next);
         }
 
         const result = await PostModel.findByIdAndUpdate(
@@ -195,13 +216,13 @@ export default {
             }
         );
 
-        if ( !result ) {
-            return appError('沒有這則貼文', next);
+        if ( originPostInfo.likes.length === result!.likes.length ) {
+            return appError('這則貼文已取消讚囉', next);
         }
 
-        success(res, result);
+        success(res, result!);
     },
-    async insertComment(req: Request<{ postID: Types.ObjectId }, unknown, { comment?: string }>, res: Response, next: NextFunction) {
+    async insertComment(req: Request<{ postID?: string }, unknown, { comment?: string }>, res: Response, next: NextFunction) {
         const { postID } = req.params;
         const { comment } = req.body;
         const reqUser = req.user as ICustomRequest['user'];
@@ -228,6 +249,8 @@ export default {
             return appError('沒有這則貼文', next);
         }
 
+        const originComment = await CommentModel.find({postID}).exec();
+
         await CommentModel.create(
             {
                 'userID': reqUser._id,
@@ -236,9 +259,15 @@ export default {
             }
         )
 
+        const finalComment = await CommentModel.find({postID}).exec();
+
+        if ( originComment.length >= finalComment.length ) {
+            return appError('【留言】新增失敗', next);
+        }
+
         success(res, '新增留言成功', 201);
     },
-    async getAllComments(req: Request<{ postID: Types.ObjectId }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
+    async getAllComments(req: Request<{ postID?: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
 
         if ( !isValidObjectId(postID) ) {
