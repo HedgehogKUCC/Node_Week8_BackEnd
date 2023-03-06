@@ -10,7 +10,7 @@ import success from '../services/responseSuccess';
 import appError from '../services/appError';
 
 export default {
-    async getPosts(req: Request<unknown, unknown, unknown, { s?: string, q?: string }>, res: Response, next: NextFunction) {
+    async getPosts(req: Request<unknown, unknown, unknown, { s?: string; q?: string; }>, res: Response, next: NextFunction) {
         const { s, q } = req.query;
         const timeSort = s === 'asc' ? 'createdAt' : '-createdAt';
         let userQuery: { content?: RegExp; } = {};
@@ -66,16 +66,30 @@ export default {
     },
     async delSinglePost(req: Request<{ postID?: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
+        const reqUser = req.user as ICustomRequest['user'];
 
         if ( !isValidObjectId(postID) ) {
             return appError('貼文 ID 格式有誤', next);
         }
 
-        const result = await PostModel.findByIdAndDelete(postID);
+        if ( !isValidObjectId(reqUser._id) ) {
+            return appError('用戶 ID 格式有誤', next);
+        }
 
-        if ( !result ) {
+        const postSearch = await PostModel.findById(postID);
+
+        if ( !postSearch ) {
             return appError('沒有這則貼文', next);
         }
+
+        const postUserID = postSearch.userID.toString();
+        const reqUserID = reqUser._id.toString();
+
+        if ( reqUserID !== postUserID ) {
+            return appError('刪除者與貼文發佈者不符合', next);
+        }
+
+        await PostModel.findByIdAndDelete(postID);
 
         success(res, '成功刪除單筆貼文');
     },
