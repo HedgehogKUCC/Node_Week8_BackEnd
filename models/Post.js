@@ -32,6 +32,7 @@ const postSchema = new mongoose_1.Schema({
         default: Date.now
     }
 }, {
+    id: false,
     versionKey: false,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },

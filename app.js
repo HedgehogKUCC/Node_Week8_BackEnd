@@ -82,7 +82,7 @@ app.use((err, req, res, next) => {
         return resErrorDev(err, res);
     }
     if (err.name === 'ValidationError') {
-        err.message = '資料欄位填寫有誤';
+        err.statusCode = 400;
         err.columns = err.errors;
         err.isOperational = true;
         return resErrorProd(err, res);

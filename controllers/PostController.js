@@ -71,13 +71,23 @@ exports.default = {
     delSinglePost(req, res, next) {
         return __awaiter(this, void 0, void 0, function* () {
             const { postID } = req.params;
+            const reqUser = req.user;
             if (!(0, mongoose_1.isValidObjectId)(postID)) {
                 return (0, appError_1.default)('貼文 ID 格式有誤', next);
             }
-            const result = yield Post_1.default.findByIdAndDelete(postID);
-            if (!result) {
+            if (!(0, mongoose_1.isValidObjectId)(reqUser._id)) {
+                return (0, appError_1.default)('用戶 ID 格式有誤', next);
+            }
+            const postSearch = yield Post_1.default.findById(postID).exec();
+            if (!postSearch) {
                 return (0, appError_1.default)('沒有這則貼文', next);
             }
+            const postUserID = postSearch.userID.toString();
+            const reqUserID = reqUser._id.toString();
+            if (reqUserID !== postUserID) {
+                return (0, appError_1.default)('刪除者與貼文發佈者不符合', next);
+            }
+            yield Post_1.default.findByIdAndDelete(postID);
             (0, responseSuccess_1.default)(res, '成功刪除單筆貼文');
         });
     },
@@ -85,8 +95,12 @@ exports.default = {
         return __awaiter(this, void 0, void 0, function* () {
             const { postID } = req.params;
             const { content } = req.body;
+            const reqUser = req.user;
             if (!(0, mongoose_1.isValidObjectId)(postID)) {
                 return (0, appError_1.default)('貼文 ID 格式有誤', next);
+            }
+            if (!(0, mongoose_1.isValidObjectId)(reqUser._id)) {
+                return (0, appError_1.default)('用戶 ID 格式有誤', next);
             }
             if (typeof content !== 'string') {
                 return (0, appError_1.default)('【貼文內容】格式有誤', next);
@@ -94,13 +108,19 @@ exports.default = {
             if (!content.trim()) {
                 return (0, appError_1.default)('【貼文內容】請勿空白', next);
             }
+            const postSearch = yield Post_1.default.findById(postID).exec();
+            if (!postSearch) {
+                return (0, appError_1.default)('沒有這則貼文', next);
+            }
+            const postUserID = postSearch.userID.toString();
+            const reqUserID = reqUser._id.toString();
+            if (reqUserID !== postUserID) {
+                return (0, appError_1.default)('編輯者與貼文發佈者不符合', next);
+            }
             const result = yield Post_1.default.findByIdAndUpdate(postID, {
                 content,
                 updatedAt: Date.now()
             }, { returnDocument: 'after' });
-            if (!result) {
-                return (0, appError_1.default)('沒有這則貼文', next);
-            }
             (0, responseSuccess_1.default)(res, result);
         });
     },
