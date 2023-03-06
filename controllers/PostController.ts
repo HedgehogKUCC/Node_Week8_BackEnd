@@ -96,9 +96,14 @@ export default {
     async updatePostContent(req: Request<{ postID?: string }, unknown, { content?: string }, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
         const { content } = req.body;
+        const reqUser = req.user as ICustomRequest['user'];
 
         if ( !isValidObjectId(postID) ) {
             return appError('貼文 ID 格式有誤', next);
+        }
+
+        if ( !isValidObjectId(reqUser._id) ) {
+            return appError('用戶 ID 格式有誤', next);
         }
 
         if ( typeof content !== 'string' ) {
@@ -107,6 +112,19 @@ export default {
 
         if ( !content.trim() ) {
             return appError('【貼文內容】請勿空白', next);
+        }
+
+        const postSearch = await PostModel.findById(postID);
+
+        if ( !postSearch ) {
+            return appError('沒有這則貼文', next);
+        }
+
+        const postUserID = postSearch.userID.toString();
+        const reqUserID = reqUser._id.toString();
+
+        if ( reqUserID !== postUserID ) {
+            return appError('編輯者與貼文發佈者不符合', next);
         }
 
         const result = await PostModel.findByIdAndUpdate(
@@ -118,11 +136,7 @@ export default {
             { returnDocument: 'after' }
         );
 
-        if ( !result ) {
-            return appError('沒有這則貼文', next);
-        }
-
-        success(res, result);
+        success(res, result!);
     },
     async getSinglePost(req: Request<{ postID?: string }, unknown, unknown, unknown>, res: Response, next: NextFunction) {
         const { postID } = req.params;
