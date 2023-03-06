@@ -93,7 +93,7 @@ app.use((err: ICustomError, req: Request, res: Response, next: NextFunction) => 
     }
 
     if ( err.name === 'ValidationError' ) {
-        err.message = '資料欄位填寫有誤';
+        err.statusCode = 400;
         err.columns = err.errors;
         err.isOperational = true;
         return resErrorProd(err, res);

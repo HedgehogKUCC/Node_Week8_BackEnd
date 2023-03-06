@@ -12,7 +12,7 @@ const userSchema = new Schema<IUser>(
             type: String,
             enum: {
                 values: ['male', 'female'],
-                message: "{VALUE} 不符合預設值",
+                message: "{VALUE} 不符合預設值 ( male, female )",
             },
             required: [true, '【性別】必填'],
             trim: true,

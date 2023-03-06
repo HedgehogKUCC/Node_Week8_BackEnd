@@ -13,10 +13,6 @@ export interface ICustomHttpServerError extends Error {
   code: string;
 }
 
-export interface ICustomRequest extends Request {
-  user: IUser;
-}
-
 export type AsyncFunction = (req: CustomRequest, res: Response, next: NextFunction) => Promise<T>;
 
 // password 會有 undefined 是回傳資料時保護 password
@@ -32,6 +28,10 @@ export interface IUser {
   updatedAt: Date;
   followers: Types.ObjectId[] | [];
   following: Types.ObjectId[] | [];
+}
+
+export interface ICustomRequest extends Request {
+  user: IUser;
 }
 
 export interface IPost {
