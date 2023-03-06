@@ -76,7 +76,7 @@ export default {
             return appError('用戶 ID 格式有誤', next);
         }
 
-        const postSearch = await PostModel.findById(postID);
+        const postSearch = await PostModel.findById(postID).exec();
 
         if ( !postSearch ) {
             return appError('沒有這則貼文', next);
@@ -114,7 +114,7 @@ export default {
             return appError('【貼文內容】請勿空白', next);
         }
 
-        const postSearch = await PostModel.findById(postID);
+        const postSearch = await PostModel.findById(postID).exec();
 
         if ( !postSearch ) {
             return appError('沒有這則貼文', next);

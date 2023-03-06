@@ -34,6 +34,7 @@ const postSchema = new Schema<IPost>(
         }
     },
     {
+        id: false,
         versionKey: false,
         toJSON: { virtuals: true },
         toObject: { virtuals: true },
