@@ -17,6 +17,11 @@ export default {
         }
 
         const files = req.files as Express.Multer.File[];
+
+        if ( files[0].fieldname !== 'avatar' ) {
+            return appError(`FormData append name: avatar, but received ${files[0].fieldname}`, next);
+        }
+
         const dimensions = sizeOf(files[0].buffer);
         if ( typeof dimensions.width === 'undefined' || dimensions.width < 300 ) {
             return appError('圖片寬至少 300像素以上', next);
