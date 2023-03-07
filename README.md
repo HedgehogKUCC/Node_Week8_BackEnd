@@ -4,20 +4,20 @@
 $ npm i
 ```
 
-# Run tsc then generate folder dist
-
-```bash
-$ npm run tsc
-```
-
 # Local develop
 
 ```bash
-$ npm run dev
+$ npm run dev:compile
 ```
 
 # Local connect MongoDB Cloud
 
 ```bash
-$ npm run prod
+$ npm run prod:compile
+```
+
+# Generate folder dist
+
+```bash
+$ npm run build
 ```
