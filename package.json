@@ -4,8 +4,13 @@
   "private": true,
   "scripts": {
     "tsc": "del-cli --force ./dist && tsc",
+    "swagger:dev": "cross-env NODE_ENV=development node ./dist/swagger.js",
+    "swagger:prod": "cross-env NODE_ENV=production node ./dist/swagger.js",
     "dev": "cross-env NODE_ENV=development nodemon ./dist/api/index.js",
-    "prod": "cross-env NODE_ENV=production nodemon ./dist/api/index.js"
+    "dev:compile": "npm run tsc && npm run swagger:dev && npm run dev",
+    "prod": "cross-env NODE_ENV=production nodemon ./dist/api/index.js",
+    "prod:compile": "npm run tsc && npm run swagger:prod && npm run prod",
+    "build": "npm run tsc && npm run swagger:prod"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
