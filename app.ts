@@ -34,8 +34,10 @@ process.on('uncaughtException', err => {
 });
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/posts', postsRouter);
+// Swagger-Autogen properties-inheritance
+// https://github.com/davibaltar/swagger-autogen#properties-inheritance
+app.use('/users', /* #swagger.tags = ['Users'] */ usersRouter);
+app.use('/posts', /* #swagger.tags = ['Posts'] */ postsRouter);
 app.use('/upload', uploadRouter);
 
 app.use((req: Request, res: Response, next: NextFunction) => {

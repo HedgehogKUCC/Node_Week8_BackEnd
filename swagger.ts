@@ -26,6 +26,10 @@ const doc = {
       description: '會員功能'
     },
     {
+      name: 'Posts',
+      description: '動態貼文'
+    },
+    {
       name: 'Others',
       description: '其它功能'
     }
