@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/api/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerFile, { customCssUrl: '/swagger-ui.css' }));
 
 process.on('uncaughtException', err => {
     // 記錄錯誤下來，等到服務都處理完後，停掉該 process
