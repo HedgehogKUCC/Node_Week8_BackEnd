@@ -7,10 +7,7 @@ import swaggerUi from "swagger-ui-express";
 // @ts-ignore
 import swaggerFile from "./swagger_output.json";
 
-import indexRouter from './routes/index';
-import uploadRouter from './routes/upload';
-import usersRouter from './routes/users';
-import postsRouter from './routes/posts';
+import indexRouters from './routes/index';
 
 import { ICustomError } from './types/index';
 
@@ -33,12 +30,50 @@ process.on('uncaughtException', err => {
     process.exit(1);
 });
 
-app.use('/', indexRouter);
-// Swagger-Autogen properties-inheritance
-// https://github.com/davibaltar/swagger-autogen#properties-inheritance
-app.use('/users', /* #swagger.tags = ['Users'] */ usersRouter);
-app.use('/posts', /* #swagger.tags = ['Posts'] */ postsRouter);
-app.use('/upload', uploadRouter);
+/**
+ * Swagger-Autogen properties-inheritance
+ * https://github.com/davibaltar/swagger-autogen#properties-inheritance
+ */
+app.use('/api',
+    /*
+        #swagger.security = [{ "bearerAuth": [] }]
+        #swagger.responses[400] = {
+            description: '一般錯誤訊息',
+            content: {
+                "application/json": {
+                    schema: { $ref: '#/definitions/ResponseErrorMsg' }
+                }
+            }
+        }
+        #swagger.responses[401] = {
+            description: 'token 無效',
+            content: {
+                "application/json": {
+                    schema: { $ref: '#/definitions/ResponseInvalidToken' }
+                }
+            }
+        }
+        #swagger.responses[404] = {
+            description: '無此路由',
+            content: {
+                "application/json": {
+                    schema: { $ref: '#/definitions/ResponseNotFoundPage' }
+                }
+            }
+        }
+        #swagger.responses[500] = {
+            description: '重大錯誤，請後端查 log',
+            content: {
+                "application/json": {
+                    schema: { $ref: '#/definitions/ResponseServerErrorMsg' }
+                }
+            }
+        }
+        #swagger.responses[504] = {
+            description: '伺服器繁忙中，請稍後在操作'
+        }
+    */
+indexRouters);
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     const error = new Error('無此路由') as ICustomError;

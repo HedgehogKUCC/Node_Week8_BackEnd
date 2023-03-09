@@ -1,11 +1,13 @@
-import { Router, Request, Response, NextFunction } from 'express';
+import { Router } from 'express';
+
+import usersRouter from './v1/users';
+import postsRouter from './v1/posts';
+import uploadRouter from './v1/upload';
 
 const router = Router();
 
-/* GET home page. */
-router.get('/', function(req: Request, res: Response, next: NextFunction) {
-  // #swagger.ignore = true
-  res.render('index', { title: 'Express' });
-});
+router.use('/users', usersRouter);
+router.use('/posts', postsRouter);
+router.use('/upload', uploadRouter);
 
 export default router;
