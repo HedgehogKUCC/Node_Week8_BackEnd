@@ -20,7 +20,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
-app.use('/api/api-doc', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_output_json_1.default));
+app.use('/api/api-doc', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_output_json_1.default, { customCssUrl: '/swagger-ui.css' }));
 process.on('uncaughtException', err => {
     // 記錄錯誤下來，等到服務都處理完後，停掉該 process
     console.error('Uncaughted Exception！');
