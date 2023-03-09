@@ -10,7 +10,7 @@
     "dev:compile": "npm run tsc && npm run swagger:dev && npm run dev",
     "prod": "cross-env NODE_ENV=production nodemon ./dist/api/index.js",
     "prod:compile": "npm run tsc && npm run swagger:prod && npm run prod",
-    "build": "npm run tsc && npm run swagger:prod"
+    "prod:build": "npm run tsc && npm run swagger:prod"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",

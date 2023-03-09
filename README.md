@@ -19,5 +19,5 @@ $ npm run prod:compile
 # Generate folder dist
 
 ```bash
-$ npm run build
+$ npm run prod:build
 ```
