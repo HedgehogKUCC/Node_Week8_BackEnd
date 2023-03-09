@@ -1,0 +1,1654 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Node.js REST API",
+    "description": "Node.js 直播班",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://meta-wall-pi.vercel.app",
+      "description": "(production) vercel server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Users",
+      "description": "會員功能"
+    },
+    {
+      "name": "Posts",
+      "description": "動態貼文"
+    },
+    {
+      "name": "Others",
+      "description": "其它功能"
+    }
+  ],
+  "paths": {
+    "/api/users/sign_up": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "註冊",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "註冊成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignUpSuccess"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUp"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/sign_in": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "登入",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "登入成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignInSuccess"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignIn"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/updatePassword": {
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "重設密碼",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/users/profile": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "取得個人資料",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "更新個人資料",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/users/getLikeList": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "取得按讚列表",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/users/{userID}/follow": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "追蹤其它會員",
+        "description": "",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/users/{userID}/unfollow": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "取消追蹤其它會員",
+        "description": "",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/users/following": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "取得追蹤列表",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/posts": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "取得所有貼文",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "新增貼文",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "刪除所有貼文",
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/posts/{postID}": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "取得單一貼文",
+        "description": "",
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "刪除單筆貼文",
+        "description": "",
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "patch": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "更新貼文",
+        "description": "",
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/posts/user/{userID}": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "取得會員所有貼文",
+        "description": "",
+        "parameters": [
+          {
+            "name": "userID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/posts/{postID}/like": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "新增一則貼文的讚",
+        "description": "",
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/posts/{postID}/unlike": {
+      "delete": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "取消一則貼文的讚",
+        "description": "",
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/posts/{postID}/comments": {
+      "get": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "取得單筆貼文所有留言",
+        "description": "",
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/posts/{postID}/comment": {
+      "post": {
+        "tags": [
+          "Posts"
+        ],
+        "summary": "新增一則貼文的留言",
+        "description": "",
+        "parameters": [
+          {
+            "name": "postID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/api/upload": {
+      "post": {
+        "tags": [
+          "Others"
+        ],
+        "summary": "上傳會員大頭貼",
+        "description": "",
+        "parameters": [
+          {
+            "name": "avatar",
+            "in": "formData",
+            "required": true,
+            "schema": {
+              "type": "file"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "上傳圖片成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UploadImageSuccess"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "一般錯誤訊息",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseErrorMsg"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "token 無效",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseInvalidToken"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "無此路由",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotFoundPage"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "重大錯誤，請後端查 log",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseServerErrorMsg"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "伺服器繁忙中，請稍後在操作"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ResponseServerErrorMsg": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": false
+          },
+          "msg": {
+            "type": "string",
+            "example": "系統錯誤，請洽系統管理員"
+          }
+        }
+      },
+      "ResponseErrorMsg": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": false
+          },
+          "msg": {
+            "type": "string",
+            "example": ""
+          },
+          "columns": {
+            "type": "object",
+            "properties": {
+              "Property": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "ValidatorError"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "properties": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "type": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "enumValues": {
+                        "type": "array",
+                        "example": [],
+                        "items": {}
+                      },
+                      "path": {
+                        "type": "string",
+                        "example": ""
+                      },
+                      "value": {
+                        "type": "string",
+                        "example": ""
+                      }
+                    }
+                  },
+                  "kind": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "path": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "value": {
+                    "type": "string",
+                    "example": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "ResponseNotFoundPage": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": false
+          },
+          "msg": {
+            "type": "string",
+            "example": "無此路由"
+          }
+        }
+      },
+      "ResponseInvalidToken": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": false
+          },
+          "msg": {
+            "type": "string",
+            "example": "請重新登入帳號"
+          }
+        }
+      },
+      "SignUp": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": ""
+          },
+          "sex": {
+            "type": "string",
+            "example": "[male | female]"
+          },
+          "email": {
+            "type": "string",
+            "example": ""
+          },
+          "password": {
+            "type": "string",
+            "example": ""
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": ""
+          }
+        },
+        "required": [
+          "name",
+          "sex",
+          "email",
+          "password",
+          "confirmPassword"
+        ]
+      },
+      "SignUpSuccess": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "SignIn": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "example": ""
+          },
+          "password": {
+            "type": "string",
+            "example": ""
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "SignInSuccess": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "user": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "example": ""
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UploadImageSuccess": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

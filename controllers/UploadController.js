@@ -26,6 +26,9 @@ exports.default = {
                 return (0, appError_1.default)('請上傳圖片', next);
             }
             const files = req.files;
+            if (files[0].fieldname !== 'avatar') {
+                return (0, appError_1.default)(`FormData append name: avatar, but received ${files[0].fieldname}`, next);
+            }
             const dimensions = (0, image_size_1.default)(files[0].buffer);
             if (typeof dimensions.width === 'undefined' || dimensions.width < 300) {
                 return (0, appError_1.default)('圖片寬至少 300像素以上', next);

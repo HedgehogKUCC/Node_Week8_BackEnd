@@ -8,10 +8,10 @@ const cors_1 = __importDefault(require("cors"));
 const path_1 = __importDefault(require("path"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const morgan_1 = __importDefault(require("morgan"));
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+// @ts-ignore
+const swagger_output_json_1 = __importDefault(require("./swagger_output.json"));
 const index_1 = __importDefault(require("./routes/index"));
-const upload_1 = __importDefault(require("./routes/upload"));
-const users_1 = __importDefault(require("./routes/users"));
-const posts_1 = __importDefault(require("./routes/posts"));
 const app = (0, express_1.default)();
 require("./connections/mongoDB");
 app.use((0, cors_1.default)());
@@ -20,16 +20,57 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.static(path_1.default.join(__dirname, 'public')));
+app.use('/api-doc', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(swagger_output_json_1.default));
 process.on('uncaughtException', err => {
     // 記錄錯誤下來，等到服務都處理完後，停掉該 process
     console.error('Uncaughted Exception！');
     console.error(err);
     process.exit(1);
 });
-app.use('/', index_1.default);
-app.use('/users', users_1.default);
-app.use('/posts', posts_1.default);
-app.use('/upload', upload_1.default);
+/**
+ * Swagger-Autogen properties-inheritance
+ * https://github.com/davibaltar/swagger-autogen#properties-inheritance
+ */
+app.use('/api', 
+/*
+    #swagger.security = [{ "bearerAuth": [] }]
+    #swagger.responses[400] = {
+        description: '一般錯誤訊息',
+        content: {
+            "application/json": {
+                schema: { $ref: '#/definitions/ResponseErrorMsg' }
+            }
+        }
+    }
+    #swagger.responses[401] = {
+        description: 'token 無效',
+        content: {
+            "application/json": {
+                schema: { $ref: '#/definitions/ResponseInvalidToken' }
+            }
+        }
+    }
+    #swagger.responses[404] = {
+        description: '無此路由',
+        content: {
+            "application/json": {
+                schema: { $ref: '#/definitions/ResponseNotFoundPage' }
+            }
+        }
+    }
+    #swagger.responses[500] = {
+        description: '重大錯誤，請後端查 log',
+        content: {
+            "application/json": {
+                schema: { $ref: '#/definitions/ResponseServerErrorMsg' }
+            }
+        }
+    }
+    #swagger.responses[504] = {
+        description: '伺服器繁忙中，請稍後在操作'
+    }
+*/
+index_1.default);
 app.use((req, res, next) => {
     const error = new Error('無此路由');
     error.statusCode = 404;
