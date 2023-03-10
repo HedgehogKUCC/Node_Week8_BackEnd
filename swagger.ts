@@ -121,10 +121,6 @@ const doc = {
         }
       }
     },
-    UploadImageSuccess: {
-      result: true,
-      data: '',
-    },
     UpdatePassword: {
       password: '',
       confirmPassword: '',
