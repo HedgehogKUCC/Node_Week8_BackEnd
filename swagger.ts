@@ -216,6 +216,21 @@ const doc = {
           updatedAt: '',
         }
       ]
+    },
+    AddPost: {
+      content: '',
+    },
+    AddPostSuccess: {
+      result: true,
+      data: {
+        _id: '',
+        userID: '',
+        content: '',
+        image: '',
+        likes: [],
+        createdAt: '',
+        updatedAt: '',
+      }
     }
   }
 }

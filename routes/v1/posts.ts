@@ -28,6 +28,22 @@ router
       #swagger.tags = ['Posts']
       #swagger.summary = '新增貼文'
       #swagger.path = '/api/posts'
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: { $ref: "#/definitions/AddPost" }
+          }
+        }
+      }
+      #swagger.responses[201] = {
+        description: '成功新增貼文',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/AddPostSuccess' }
+          }
+        }
+      }
     */
     PostController.insertPost))
   .delete(isAuth, handleErrorAsync(
