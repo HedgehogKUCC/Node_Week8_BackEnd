@@ -104,6 +104,22 @@ router
     /*
       #swagger.tags = ['Users']
       #swagger.summary = '更新個人資料'
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: { $ref: "#/definitions/UpdateProfile" }
+          }
+        }
+      }
+      #swagger.responses[200] = {
+        description: '成功更新個人資料',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/GetUserProfileSuccess' }
+          }
+        }
+      }
     */
     UserController.updateUserInfo));
 

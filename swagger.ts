@@ -152,6 +152,11 @@ const doc = {
           }
         ]
       }
+    },
+    UpdateProfile: {
+      avatar: '',
+      name: '',
+      sex: '[male | female]'
     }
   }
 }
