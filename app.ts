@@ -75,10 +75,6 @@ app.use('/api',
     */
 indexRouters);
 
-app.use('/index.html', function(req: Request, res: Response, next: NextFunction) {
-    res.redirect('/api/doc');
-});
-
 app.use((req: Request, res: Response, next: NextFunction) => {
     const error = new Error('無此路由') as ICustomError;
     error.statusCode = 404;
