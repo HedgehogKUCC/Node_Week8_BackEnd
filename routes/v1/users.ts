@@ -146,6 +146,14 @@ router
     /*
       #swagger.tags = ['Users']
       #swagger.summary = '追蹤其它會員'
+      #swagger.responses[200] = {
+        description: '成功追蹤其它會員',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+          }
+        }
+      }
     */
     UserController.followUser));
 
