@@ -121,6 +121,14 @@ router
     /*
       #swagger.tags = ['Posts']
       #swagger.summary = '取得會員所有貼文'
+      #swagger.responses[200] = {
+        description: '成功取得會員所有貼文',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/GetPostsSuccess' }
+          }
+        }
+      }
     */
     PostController.getUserPosts));
 
