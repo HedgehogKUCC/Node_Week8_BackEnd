@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api/api-doc', swaggerUi.serve, swaggerUi.setup(swaggerFile, { customCssUrl: '/swagger-ui.css' }));
+app.use('/api/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile, { customCssUrl: '/swagger-ui.css' }));
 
 process.on('uncaughtException', err => {
     // 記錄錯誤下來，等到服務都處理完後，停掉該 process
@@ -74,6 +74,10 @@ app.use('/api',
         }
     */
 indexRouters);
+
+app.use('/index.html', function(req: Request, res: Response, next: NextFunction) {
+    res.redirect('/api/doc');
+});
 
 app.use((req: Request, res: Response, next: NextFunction) => {
     const error = new Error('無此路由') as ICustomError;
