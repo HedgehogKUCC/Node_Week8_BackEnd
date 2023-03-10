@@ -163,6 +163,14 @@ router
     /*
       #swagger.tags = ['Users']
       #swagger.summary = '取消追蹤其它會員'
+      #swagger.responses[200] = {
+        description: '成功取消追蹤其它會員',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+          }
+        }
+      }
     */
     UserController.cancelFollowUser));
 
