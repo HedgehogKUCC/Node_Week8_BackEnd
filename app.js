@@ -71,7 +71,7 @@ app.use('/api',
     }
 */
 index_1.default);
-app.use('/index.html', function (req, res, next) {
+app.use('/index', function (req, res, next) {
     res.redirect('/api/doc');
 });
 app.use((req, res, next) => {
