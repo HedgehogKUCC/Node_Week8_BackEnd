@@ -227,7 +227,7 @@ const doc = {
         userID: '',
         content: '',
         image: '',
-        likes: [],
+        likes: [ '' ],
         createdAt: '',
         updatedAt: '',
       }

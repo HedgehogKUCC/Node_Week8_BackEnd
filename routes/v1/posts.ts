@@ -68,6 +68,14 @@ router
     /*
       #swagger.tags = ['Posts']
       #swagger.summary = '取得單一貼文'
+      #swagger.responses[201] = {
+        description: '成功取得單一貼文',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/AddPostSuccess' }
+          }
+        }
+      }
     */
     PostController.getSinglePost))
   .patch(isAuth, handleErrorAsync(
