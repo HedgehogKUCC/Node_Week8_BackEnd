@@ -104,6 +104,14 @@ router
     /*
       #swagger.tags = ['Posts']
       #swagger.summary = '刪除單筆貼文'
+      #swagger.responses[200] = {
+        description: '成功刪除單筆貼文',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+          }
+        }
+      }
     */
     PostController.delSinglePost));
 
