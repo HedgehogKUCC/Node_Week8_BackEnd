@@ -231,6 +231,31 @@ const doc = {
         createdAt: '',
         updatedAt: '',
       }
+    },
+    GetPostWithComments: {
+      result: true,
+      data: {
+        _id: '',
+        userID: '',
+        content: '',
+        image: '',
+        likes: [ '' ],
+        createdAt: '',
+        updatedAt: '',
+        comments: [
+          {
+            _id: '',
+            comment: '',
+            userID: {
+              _id: '',
+              name: '',
+              avatar: '',
+            },
+            postID: '',
+            createdAt: '',
+          }
+        ]
+      }
     }
   }
 }

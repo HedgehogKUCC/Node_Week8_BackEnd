@@ -172,6 +172,14 @@ router
     /*
       #swagger.tags = ['Posts']
       #swagger.summary = '取得單筆貼文所有留言'
+      #swagger.responses[200] = {
+        description: '成功取得單筆貼文所有留言',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/GetPostWithComments' }
+          }
+        }
+      }
     */
     PostController.getAllComments));
 
