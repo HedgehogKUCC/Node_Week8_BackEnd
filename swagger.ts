@@ -129,6 +129,30 @@ const doc = {
       password: '',
       confirmPassword: '',
     },
+    GetUserProfileSuccess: {
+      result: true,
+      data: {
+        _id: '',
+        name: '',
+        sex: '[male | female]',
+        email: '',
+        avatar: '',
+        followers: [
+          {
+            _id: '',
+            user: '',
+            createdAt: '',
+          }
+        ],
+        following: [
+          {
+            _id: '',
+            user: '',
+            createdAt: '',
+          }
+        ]
+      }
+    }
   }
 }
 

@@ -90,6 +90,14 @@ router
     /*
       #swagger.tags = ['Users']
       #swagger.summary = '取得個人資料'
+      #swagger.responses[200] = {
+        description: '成功取得個人資料',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/GetUserProfileSuccess' }
+          }
+        }
+      }
     */
     UserController.getUser))
   .patch(isAuth, handleErrorAsync(
