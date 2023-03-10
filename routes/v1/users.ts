@@ -65,6 +65,22 @@ router
     /*
       #swagger.tags = ['Users']
       #swagger.summary = '重設密碼'
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: { $ref: "#/definitions/UpdatePassword" }
+          }
+        }
+      }
+      #swagger.responses[200] = {
+        description: '重設密碼成功',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+          }
+        }
+      }
     */
     UserController.updateUserPassword));
 

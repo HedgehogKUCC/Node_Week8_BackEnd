@@ -60,6 +60,10 @@ const doc = {
       result: false,
       msg: '系統錯誤，請洽系統管理員'
     },
+    ResponseSuccessMsg: {
+      result: true,
+      data: '',
+    },
     ResponseErrorMsg: {
       result: false,
       msg: '',
@@ -120,7 +124,11 @@ const doc = {
     UploadImageSuccess: {
       result: true,
       data: '',
-    }
+    },
+    UpdatePassword: {
+      password: '',
+      confirmPassword: '',
+    },
   }
 }
 
