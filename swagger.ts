@@ -157,6 +157,26 @@ const doc = {
       avatar: '',
       name: '',
       sex: '[male | female]'
+    },
+    GetLikeList: {
+      result: true,
+      data: [
+        {
+          _id: '',
+          userID: {
+            _id: '',
+            name: '',
+            avatar: '',
+          },
+          content: '',
+          image: '',
+          likes: [
+            '',
+          ],
+          createdAt: '',
+          updatedAt: '',
+        }
+      ]
     }
   }
 }
