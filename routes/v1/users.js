@@ -64,6 +64,22 @@ router
 /*
   #swagger.tags = ['Users']
   #swagger.summary = '重設密碼'
+  #swagger.requestBody = {
+    required: true,
+    content: {
+      "application/json": {
+        schema: { $ref: "#/definitions/UpdatePassword" }
+      }
+    }
+  }
+  #swagger.responses[200] = {
+    description: '重設密碼成功',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+      }
+    }
+  }
 */
 UserController_1.default.updateUserPassword));
 router
@@ -72,12 +88,36 @@ router
 /*
   #swagger.tags = ['Users']
   #swagger.summary = '取得個人資料'
+  #swagger.responses[200] = {
+    description: '成功取得個人資料',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/GetUserProfileSuccess' }
+      }
+    }
+  }
 */
 UserController_1.default.getUser))
     .patch(isAuth_1.default, (0, handleErrorAsync_1.default)(
 /*
   #swagger.tags = ['Users']
   #swagger.summary = '更新個人資料'
+  #swagger.requestBody = {
+    required: true,
+    content: {
+      "application/json": {
+        schema: { $ref: "#/definitions/UpdateProfile" }
+      }
+    }
+  }
+  #swagger.responses[200] = {
+    description: '成功更新個人資料',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/GetUserProfileSuccess' }
+      }
+    }
+  }
 */
 UserController_1.default.updateUserInfo));
 router
@@ -86,6 +126,14 @@ router
 /*
   #swagger.tags = ['Users']
   #swagger.summary = '取得按讚列表'
+  #swagger.responses[200] = {
+    description: '成功取得按讚列表',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/GetLikeList' }
+      }
+    }
+  }
 */
 UserController_1.default.getUserLikePostList));
 router
@@ -94,6 +142,14 @@ router
 /*
   #swagger.tags = ['Users']
   #swagger.summary = '追蹤其它會員'
+  #swagger.responses[200] = {
+    description: '成功追蹤其它會員',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+      }
+    }
+  }
 */
 UserController_1.default.followUser));
 router
@@ -102,6 +158,14 @@ router
 /*
   #swagger.tags = ['Users']
   #swagger.summary = '取消追蹤其它會員'
+  #swagger.responses[200] = {
+    description: '成功取消追蹤其它會員',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+      }
+    }
+  }
 */
 UserController_1.default.cancelFollowUser));
 router
@@ -110,6 +174,14 @@ router
 /*
   #swagger.tags = ['Users']
   #swagger.summary = '取得追蹤列表'
+  #swagger.responses[200] = {
+    description: '成功取得追蹤列表',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/GetUserFollowing' }
+      }
+    }
+  }
 */
 UserController_1.default.getUserFollowing));
 exports.default = router;

@@ -185,6 +185,16 @@
         "description": "",
         "parameters": [],
         "responses": {
+          "200": {
+            "description": "重設密碼成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseSuccessMsg"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -233,7 +243,17 @@
           {
             "bearerAuth": []
           }
-        ]
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePassword"
+              }
+            }
+          }
+        }
       }
     },
     "/api/users/profile": {
@@ -245,6 +265,16 @@
         "description": "",
         "parameters": [],
         "responses": {
+          "200": {
+            "description": "成功取得個人資料",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserProfileSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -303,6 +333,16 @@
         "description": "",
         "parameters": [],
         "responses": {
+          "200": {
+            "description": "成功更新個人資料",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserProfileSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -351,7 +391,17 @@
           {
             "bearerAuth": []
           }
-        ]
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfile"
+              }
+            }
+          }
+        }
       }
     },
     "/api/users/getLikeList": {
@@ -363,6 +413,16 @@
         "description": "",
         "parameters": [],
         "responses": {
+          "200": {
+            "description": "成功取得按讚列表",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetLikeList"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -432,6 +492,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "成功追蹤其它會員",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseSuccessMsg"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -501,6 +571,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "成功取消追蹤其它會員",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseSuccessMsg"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -561,6 +641,16 @@
         "description": "",
         "parameters": [],
         "responses": {
+          "200": {
+            "description": "成功取得追蹤列表",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUserFollowing"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -621,6 +711,16 @@
         "description": "",
         "parameters": [],
         "responses": {
+          "200": {
+            "description": "成功取得所有貼文",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPostsSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -679,6 +779,16 @@
         "description": "",
         "parameters": [],
         "responses": {
+          "201": {
+            "description": "成功新增貼文",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddPostSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -727,7 +837,17 @@
           {
             "bearerAuth": []
           }
-        ]
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPost"
+              }
+            }
+          }
+        }
       },
       "delete": {
         "tags": [
@@ -737,6 +857,16 @@
         "description": "",
         "parameters": [],
         "responses": {
+          "200": {
+            "description": "成功刪除所有貼文",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseSuccessMsg"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -806,6 +936,16 @@
           }
         ],
         "responses": {
+          "201": {
+            "description": "成功取得單一貼文",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddPostSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -873,6 +1013,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "成功刪除單筆貼文",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseSuccessMsg"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -940,6 +1090,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "成功更新貼文",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddPostSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -988,7 +1148,17 @@
           {
             "bearerAuth": []
           }
-        ]
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddPost"
+              }
+            }
+          }
+        }
       }
     },
     "/api/posts/user/{userID}": {
@@ -1009,6 +1179,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "成功取得會員所有貼文",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPostsSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -1078,6 +1258,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "成功新增一則貼文的讚",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddPostSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -1147,6 +1337,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "成功取消一則貼文的讚",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddPostSuccess"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -1216,6 +1416,16 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "成功取得單筆貼文所有留言",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPostWithComments"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -1285,6 +1495,16 @@
           }
         ],
         "responses": {
+          "201": {
+            "description": "成功新增一則貼文的留言",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseSuccessMsg"
+                }
+              }
+            }
+          },
           "400": {
             "description": "一般錯誤訊息",
             "content": {
@@ -1359,7 +1579,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UploadImageSuccess"
+                  "$ref": "#/components/schemas/ResponseSuccessMsg"
                 }
               }
             }
@@ -1431,6 +1651,19 @@
           }
         }
       },
+      "ResponseSuccessMsg": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
       "ResponseErrorMsg": {
         "type": "object",
         "properties": {
@@ -1469,8 +1702,12 @@
                       },
                       "enumValues": {
                         "type": "array",
-                        "example": [],
-                        "items": {}
+                        "example": [
+                          ""
+                        ],
+                        "items": {
+                          "type": "string"
+                        }
                       },
                       "path": {
                         "type": "string",
@@ -1629,7 +1866,20 @@
           }
         }
       },
-      "UploadImageSuccess": {
+      "UpdatePassword": {
+        "type": "object",
+        "properties": {
+          "password": {
+            "type": "string",
+            "example": ""
+          },
+          "confirmPassword": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "GetUserProfileSuccess": {
         "type": "object",
         "properties": {
           "result": {
@@ -1637,8 +1887,423 @@
             "example": true
           },
           "data": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": ""
+              },
+              "name": {
+                "type": "string",
+                "example": ""
+              },
+              "sex": {
+                "type": "string",
+                "example": "[male | female]"
+              },
+              "email": {
+                "type": "string",
+                "example": ""
+              },
+              "avatar": {
+                "type": "string",
+                "example": ""
+              },
+              "followers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "user": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              },
+              "following": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "user": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "UpdateProfile": {
+        "type": "object",
+        "properties": {
+          "avatar": {
             "type": "string",
             "example": ""
+          },
+          "name": {
+            "type": "string",
+            "example": ""
+          },
+          "sex": {
+            "type": "string",
+            "example": "[male | female]"
+          }
+        }
+      },
+      "GetLikeList": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": ""
+                },
+                "userID": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "avatar": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "content": {
+                  "type": "string",
+                  "example": ""
+                },
+                "image": {
+                  "type": "string",
+                  "example": ""
+                },
+                "likes": {
+                  "type": "array",
+                  "example": [
+                    ""
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": ""
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetUserFollowing": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": ""
+              },
+              "name": {
+                "type": "string",
+                "example": ""
+              },
+              "sex": {
+                "type": "string",
+                "example": "[male | female]"
+              },
+              "email": {
+                "type": "string",
+                "example": ""
+              },
+              "avatar": {
+                "type": "string",
+                "example": ""
+              },
+              "following": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "avatar": {
+                          "type": "string",
+                          "example": ""
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetPostsSuccess": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "_id": {
+                  "type": "string",
+                  "example": ""
+                },
+                "userID": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "name": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "avatar": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                },
+                "content": {
+                  "type": "string",
+                  "example": ""
+                },
+                "image": {
+                  "type": "string",
+                  "example": ""
+                },
+                "likes": {
+                  "type": "array",
+                  "example": [
+                    ""
+                  ],
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": ""
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "example": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "AddPost": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "example": ""
+          }
+        }
+      },
+      "AddPostSuccess": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": ""
+              },
+              "userID": {
+                "type": "string",
+                "example": ""
+              },
+              "content": {
+                "type": "string",
+                "example": ""
+              },
+              "image": {
+                "type": "string",
+                "example": ""
+              },
+              "likes": {
+                "type": "array",
+                "example": [
+                  ""
+                ],
+                "items": {
+                  "type": "string"
+                }
+              },
+              "createdAt": {
+                "type": "string",
+                "example": ""
+              },
+              "updatedAt": {
+                "type": "string",
+                "example": ""
+              }
+            }
+          }
+        }
+      },
+      "GetPostWithComments": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": ""
+              },
+              "userID": {
+                "type": "string",
+                "example": ""
+              },
+              "content": {
+                "type": "string",
+                "example": ""
+              },
+              "image": {
+                "type": "string",
+                "example": ""
+              },
+              "likes": {
+                "type": "array",
+                "example": [
+                  ""
+                ],
+                "items": {
+                  "type": "string"
+                }
+              },
+              "createdAt": {
+                "type": "string",
+                "example": ""
+              },
+              "updatedAt": {
+                "type": "string",
+                "example": ""
+              },
+              "comments": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "comment": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "userID": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": ""
+                        },
+                        "avatar": {
+                          "type": "string",
+                          "example": ""
+                        }
+                      }
+                    },
+                    "postID": {
+                      "type": "string",
+                      "example": ""
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "example": ""
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }

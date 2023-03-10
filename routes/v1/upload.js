@@ -26,7 +26,7 @@ router
     description: '上傳圖片成功',
     content: {
       "application/json": {
-        schema: { $ref: '#/definitions/UploadImageSuccess' }
+        schema: { $ref: '#/definitions/ResponseSuccessMsg' }
       }
     }
   }

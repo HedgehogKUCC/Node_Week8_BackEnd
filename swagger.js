@@ -60,6 +60,10 @@ const doc = {
             result: false,
             msg: '系統錯誤，請洽系統管理員'
         },
+        ResponseSuccessMsg: {
+            result: true,
+            data: '',
+        },
         ResponseErrorMsg: {
             result: false,
             msg: '',
@@ -70,7 +74,7 @@ const doc = {
                     properties: {
                         message: '',
                         type: '',
-                        enumValues: [],
+                        enumValues: [''],
                         path: '',
                         value: '',
                     },
@@ -117,9 +121,137 @@ const doc = {
                 }
             }
         },
-        UploadImageSuccess: {
+        UpdatePassword: {
+            password: '',
+            confirmPassword: '',
+        },
+        GetUserProfileSuccess: {
             result: true,
-            data: '',
+            data: {
+                _id: '',
+                name: '',
+                sex: '[male | female]',
+                email: '',
+                avatar: '',
+                followers: [
+                    {
+                        _id: '',
+                        user: '',
+                        createdAt: '',
+                    }
+                ],
+                following: [
+                    {
+                        _id: '',
+                        user: '',
+                        createdAt: '',
+                    }
+                ]
+            }
+        },
+        UpdateProfile: {
+            avatar: '',
+            name: '',
+            sex: '[male | female]'
+        },
+        GetLikeList: {
+            result: true,
+            data: [
+                {
+                    _id: '',
+                    userID: {
+                        _id: '',
+                        name: '',
+                        avatar: '',
+                    },
+                    content: '',
+                    image: '',
+                    likes: [
+                        '',
+                    ],
+                    createdAt: '',
+                    updatedAt: '',
+                }
+            ]
+        },
+        GetUserFollowing: {
+            result: true,
+            data: {
+                _id: '',
+                name: '',
+                sex: '[male | female]',
+                email: '',
+                avatar: '',
+                following: [
+                    {
+                        _id: '',
+                        createdAt: '',
+                        user: {
+                            _id: '',
+                            name: '',
+                            avatar: '',
+                        }
+                    }
+                ]
+            }
+        },
+        GetPostsSuccess: {
+            result: true,
+            data: [
+                {
+                    _id: '',
+                    userID: {
+                        _id: '',
+                        name: '',
+                        avatar: '',
+                    },
+                    content: '',
+                    image: '',
+                    likes: [''],
+                    createdAt: '',
+                    updatedAt: '',
+                }
+            ]
+        },
+        AddPost: {
+            content: '',
+        },
+        AddPostSuccess: {
+            result: true,
+            data: {
+                _id: '',
+                userID: '',
+                content: '',
+                image: '',
+                likes: [''],
+                createdAt: '',
+                updatedAt: '',
+            }
+        },
+        GetPostWithComments: {
+            result: true,
+            data: {
+                _id: '',
+                userID: '',
+                content: '',
+                image: '',
+                likes: [''],
+                createdAt: '',
+                updatedAt: '',
+                comments: [
+                    {
+                        _id: '',
+                        comment: '',
+                        userID: {
+                            _id: '',
+                            name: '',
+                            avatar: '',
+                        },
+                        postID: '',
+                        createdAt: '',
+                    }
+                ]
+            }
         }
     }
 };

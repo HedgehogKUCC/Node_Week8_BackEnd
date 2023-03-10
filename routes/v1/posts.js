@@ -15,6 +15,14 @@ router
   #swagger.tags = ['Posts']
   #swagger.summary = '取得所有貼文'
   #swagger.path = '/api/posts'
+  #swagger.responses[200] = {
+    description: '成功取得所有貼文',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/GetPostsSuccess' }
+      }
+    }
+  }
 */
 PostController_1.default.getPosts))
     .post(isAuth_1.default, (0, handleErrorAsync_1.default)(
@@ -22,6 +30,22 @@ PostController_1.default.getPosts))
   #swagger.tags = ['Posts']
   #swagger.summary = '新增貼文'
   #swagger.path = '/api/posts'
+  #swagger.requestBody = {
+    required: true,
+    content: {
+      "application/json": {
+        schema: { $ref: "#/definitions/AddPost" }
+      }
+    }
+  }
+  #swagger.responses[201] = {
+    description: '成功新增貼文',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/AddPostSuccess' }
+      }
+    }
+  }
 */
 PostController_1.default.insertPost))
     .delete(isAuth_1.default, (0, handleErrorAsync_1.default)(
@@ -29,6 +53,14 @@ PostController_1.default.insertPost))
   #swagger.tags = ['Posts']
   #swagger.summary = '刪除所有貼文'
   #swagger.path = '/api/posts'
+  #swagger.responses[200] = {
+    description: '成功刪除所有貼文',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+      }
+    }
+  }
 */
 PostController_1.default.delAllPosts));
 router
@@ -37,18 +69,50 @@ router
 /*
   #swagger.tags = ['Posts']
   #swagger.summary = '取得單一貼文'
+  #swagger.responses[201] = {
+    description: '成功取得單一貼文',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/AddPostSuccess' }
+      }
+    }
+  }
 */
 PostController_1.default.getSinglePost))
     .patch(isAuth_1.default, (0, handleErrorAsync_1.default)(
 /*
   #swagger.tags = ['Posts']
   #swagger.summary = '更新貼文'
+  #swagger.requestBody = {
+    required: true,
+    content: {
+      "application/json": {
+        schema: { $ref: "#/definitions/AddPost" }
+      }
+    }
+  }
+  #swagger.responses[200] = {
+    description: '成功更新貼文',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/AddPostSuccess' }
+      }
+    }
+  }
 */
 PostController_1.default.updatePostContent))
     .delete(isAuth_1.default, (0, handleErrorAsync_1.default)(
 /*
   #swagger.tags = ['Posts']
   #swagger.summary = '刪除單筆貼文'
+  #swagger.responses[200] = {
+    description: '成功刪除單筆貼文',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+      }
+    }
+  }
 */
 PostController_1.default.delSinglePost));
 router
@@ -57,6 +121,14 @@ router
 /*
   #swagger.tags = ['Posts']
   #swagger.summary = '取得會員所有貼文'
+  #swagger.responses[200] = {
+    description: '成功取得會員所有貼文',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/GetPostsSuccess' }
+      }
+    }
+  }
 */
 PostController_1.default.getUserPosts));
 router
@@ -65,6 +137,14 @@ router
 /*
   #swagger.tags = ['Posts']
   #swagger.summary = '新增一則貼文的讚'
+  #swagger.responses[200] = {
+    description: '成功新增一則貼文的讚',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/AddPostSuccess' }
+      }
+    }
+  }
 */
 PostController_1.default.clickPostLike));
 router
@@ -73,6 +153,14 @@ router
 /*
   #swagger.tags = ['Posts']
   #swagger.summary = '取消一則貼文的讚'
+  #swagger.responses[200] = {
+    description: '成功取消一則貼文的讚',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/AddPostSuccess' }
+      }
+    }
+  }
 */
 PostController_1.default.cancelPostLike));
 router
@@ -81,6 +169,14 @@ router
 /*
   #swagger.tags = ['Posts']
   #swagger.summary = '取得單筆貼文所有留言'
+  #swagger.responses[200] = {
+    description: '成功取得單筆貼文所有留言',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/GetPostWithComments' }
+      }
+    }
+  }
 */
 PostController_1.default.getAllComments));
 router
@@ -89,6 +185,14 @@ router
 /*
   #swagger.tags = ['Posts']
   #swagger.summary = '新增一則貼文的留言'
+  #swagger.responses[201] = {
+    description: '成功新增一則貼文的留言',
+    content: {
+      "application/json": {
+        schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+      }
+    }
+  }
 */
 PostController_1.default.insertComment));
 exports.default = router;
