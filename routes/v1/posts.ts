@@ -181,6 +181,14 @@ router
     /*
       #swagger.tags = ['Posts']
       #swagger.summary = '新增一則貼文的留言'
+      #swagger.responses[201] = {
+        description: '成功新增一則貼文的留言',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+          }
+        }
+      }
     */
     PostController.insertComment));
 
