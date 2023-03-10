@@ -74,7 +74,7 @@ const doc = {
           properties: {
             message: '',
             type: '',
-            enumValues: [],
+            enumValues: [ '' ],
             path: '',
             value: '',
           },
