@@ -51,6 +51,14 @@ router
       #swagger.tags = ['Posts']
       #swagger.summary = '刪除所有貼文'
       #swagger.path = '/api/posts'
+      #swagger.responses[200] = {
+        description: '成功刪除所有貼文',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/ResponseSuccessMsg' }
+          }
+        }
+      }
     */
     PostController.delAllPosts));
 
