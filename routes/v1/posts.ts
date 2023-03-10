@@ -138,6 +138,14 @@ router
     /*
       #swagger.tags = ['Posts']
       #swagger.summary = '新增一則貼文的讚'
+      #swagger.responses[200] = {
+        description: '成功新增一則貼文的讚',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/AddPostSuccess' }
+          }
+        }
+      }
     */
     PostController.clickPostLike));
 
