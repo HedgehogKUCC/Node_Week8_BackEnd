@@ -177,6 +177,27 @@ const doc = {
           updatedAt: '',
         }
       ]
+    },
+    GetUserFollowing: {
+      result: true,
+      data: {
+        _id: '',
+        name: '',
+        sex: '[male | female]',
+        email: '',
+        avatar: '',
+        following: [
+          {
+            _id: '',
+            createdAt: '',
+            user: {
+              _id: '',
+              name: '',
+              avatar: '',
+            }
+          }
+        ]
+      }
     }
   }
 }
