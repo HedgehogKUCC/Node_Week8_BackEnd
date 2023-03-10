@@ -82,6 +82,22 @@ router
     /*
       #swagger.tags = ['Posts']
       #swagger.summary = '更新貼文'
+      #swagger.requestBody = {
+        required: true,
+        content: {
+          "application/json": {
+            schema: { $ref: "#/definitions/AddPost" }
+          }
+        }
+      }
+      #swagger.responses[200] = {
+        description: '成功更新貼文',
+        content: {
+          "application/json": {
+            schema: { $ref: '#/definitions/AddPostSuccess' }
+          }
+        }
+      }
     */
     PostController.updatePostContent))
   .delete(isAuth, handleErrorAsync(
