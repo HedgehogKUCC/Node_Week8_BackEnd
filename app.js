@@ -71,9 +71,6 @@ app.use('/api',
     }
 */
 index_1.default);
-app.use('/index', function (req, res, next) {
-    res.redirect('/api/doc');
-});
 app.use((req, res, next) => {
     const error = new Error('無此路由');
     error.statusCode = 404;
